@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="register.css">
+    <title>CSS Exercise 1</title>
+</head>
+
+<body>
+    <div class="parent-form">
+
+        <div class="form-area">
+
+            <div class="top-form">
+                <h1 class="top-text">Register</h1>
+            </div>
+
+            <form id="register-form" class="input-group">
+                <input type="email" class="input-field" placeholder="Email address" required>
+                <input type="text" class="input-field" placeholder="Phone number" required>
+                <input type="password" class="input-field" placeholder="Password" required>
+                <input type="password" class="input-field" placeholder="Retype password" required>
+                <input type="text" class="input-field" placeholder="First name" required>
+                <input type="text" class="input-field" placeholder="Last name" required>
+                <input type="text" class="input-field" placeholder="Address" required>
+                <input type="text" class="input-field" placeholder="City" required>
+                <input type="text" class="input-field" placeholder="Zip code" required>
+
+                <fieldset>
+                    <legend>Account Type</legend>
+                    <label for="rad0" class="btn" id="type-label">Shopper</label>
+                    <input id="rad0" class="rad" name="rad" type="radio">
+                    <label for="rad1" class="btn" id="type-label">Store owner</label>
+                    <input id="rad1" class="rad" name="rad" type="radio">
+
+                    <div class="store-extra">
+                        <div id="store-owner">
+                            <input type="text" class="input-field" placeholder="Business name">
+                            <input type="text" class="input-field" placeholder="Store name">
+
+                            <label for="store_type">Store category:</label>
+
+                            <select name="store_type" id="store_type">
+                                <option value="Department">Department</option>
+                                <option value="Grocery">Grocery</option>
+                                <option value="Restaurant">Restaurant</option>
+                                <option value="Clothing">Clothing</option>
+                                <option value="Accessories ">Accessories </option>
+                                <option value="Pharmacy">Pharmacy</option>
+                                <option value="Technology">Technology</option>
+                                <option value="Pet">Pet</option>
+                                <option value="Toy">Toy</option>
+                                <option value="Specialty">Specialty</option>
+                                <option value="Thrift">Thrift</option>
+                                <option value="Services">Services</option>
+                                <option value="Kiosk">Kiosk</option>
+                            </select>
+
+                        </div>
+                    </div>
+                </fieldset>
+
+                <input type="checkbox" id="terms" class="terms">
+                <label for="terms" class="terms-label">I agree to the terms and
+                    conditions</label>
+
+                <input class="clear-btn" type="reset" value="Clear form">
+
+                <button type="submit" class="btn">Register</button>
+                <div class="has-account">
+                    <p>Already have an account? <a href="login.html">Sign in</a></p>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <footer>
+    </footer>
+</body>
+
+</html>
