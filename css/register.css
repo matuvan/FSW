@@ -52,30 +52,41 @@ body {
 .input-field {
     width: 100%;
     padding: 10px 0;
-    margin: 5px 0;
-    border-left: 0;
+    margin: auto;
+    border-left: rgb(142, 223, 255);
     border-right: 0;
     border-top: 0;
-    border-bottom: 5px solid rgb(0, 183, 255);
+    border-bottom: 4px solid rgb(142, 223, 255);
     outline: none;
     background: transparent;
 }
 
-/* .store-extra { 
+.input-field:focus, .input-field-first:focus, .input-field-last:focus {
+    background: white;
+}
+
+.input-field-first, .input-field-last {
+    width: 50%;
+    float: left;
+    padding: 10px 0;
+    margin: auto;
+    border-left: 0;
+    border-right: 4px solid rgb(142, 223, 255);
+    border-top: 0;
+    border-bottom: 4px solid rgb(142, 223, 255);
+    outline: none;
+    background: transparent;
+}
+
+.input-field-last {
+    border-right: 0;
+}
+
+fieldset,
+#store-type {
     margin-top: 10px;
+    margin-bottom: 10px;
 }
-
-#reveal-store:checked~#store-owner{
-    display: block;
-}
-
-#store-owner{    
-    display: none;
-}
-
-.collapse-label{
-    font-size: 14px;
-} */
 
 .rad, .store-extra {
     display: none;
@@ -85,7 +96,9 @@ body {
     display: block;
 }
 
-.btn {
+.btn,
+.clear-btn,
+.register-btn {
     width: 50%;
     padding: 10px 30px;
     cursor: pointer;
@@ -100,24 +113,12 @@ body {
 }
 
 .clear-btn {
-    width: 50%;
-    padding: 10px 30px;
-    cursor: pointer;
-    display: block;
-    margin: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
     background: linear-gradient(to bottom, rgb(255, 35, 35), rgb(255, 196, 196));
-    border: 0;
-    border-radius: 50px;
-    opacity: 0.8;
 }
 
-.clear-btn:hover {
-    opacity: 1;
-}
-
-.register-btn:hover {
+.clear-btn:hover,
+.register-btn:hover,
+.btn:hover {
     opacity: 1;
 }
 
@@ -126,18 +127,16 @@ body {
     margin-top: 10px;
 }
 
-.terms-label {
+.terms-label,
+#category-label,
+.has-account>p,
+.has-account>a  {
     font-size: 14px;
 }
 
 .has-account {
     text-align: center;
-    margin-top: 30px;
     margin-bottom: 30px;
-}
-
-.has-account > p, .has-account > a {
-    font-size: 14px;
 }
 
 #register-form {

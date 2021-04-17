@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="css/register.css">
     <title>CSS Exercise 1</title>
 </head>
 
@@ -19,14 +19,14 @@
 
             <form id="register-form" class="input-group">
                 <input type="email" class="input-field" placeholder="Email address" required>
-                <input type="text" class="input-field" placeholder="Phone number" required>
+                <input type="number" class="input-field" placeholder="Phone number" required>
                 <input type="password" class="input-field" placeholder="Password" required>
                 <input type="password" class="input-field" placeholder="Retype password" required>
-                <input type="text" class="input-field" placeholder="First name" required>
-                <input type="text" class="input-field" placeholder="Last name" required>
+                <input type="text" class="input-field-first" placeholder="First name" required>
+                <input type="text" class="input-field-last" placeholder="Last name" required>
                 <input type="text" class="input-field" placeholder="Address" required>
                 <input type="text" class="input-field" placeholder="City" required>
-                <input type="text" class="input-field" placeholder="Zip code" required>
+                <input type="number" class="input-field" placeholder="Zip code" required>
 
                 <fieldset>
                     <legend>Account Type</legend>
@@ -40,9 +40,9 @@
                             <input type="text" class="input-field" placeholder="Business name">
                             <input type="text" class="input-field" placeholder="Store name">
 
-                            <label for="store_type">Store category:</label>
+                            <label for="store-type" id="category-label">Store category:</label>
 
-                            <select name="store_type" id="store_type">
+                            <select name="store-type" id="store-type">
                                 <option value="Department">Department</option>
                                 <option value="Grocery">Grocery</option>
                                 <option value="Restaurant">Restaurant</option>
@@ -68,7 +68,7 @@
 
                 <input class="clear-btn" type="reset" value="Clear form">
 
-                <button type="submit" class="btn">Register</button>
+                <button type="submit" class="register-btn">Register</button>
                 <div class="has-account">
                     <p>Already have an account? <a href="login.html">Sign in</a></p>
                 </div>
