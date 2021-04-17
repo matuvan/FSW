@@ -1,0 +1,39 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.575);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+}
+  
+.title {
+    font-size: 18px;
+}
+  
+a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+}
+  
+main h2 {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .column {
+        width: 25%;
+        }
+    }
+    
+    @media screen and (min-width: 1024px) {
+    .column {
+        width: 25%;
+        }
+    }
+    
+    @media screen and (max-width: 767px) {
+        .column {
+            width: 50%;
+            }
+        }
