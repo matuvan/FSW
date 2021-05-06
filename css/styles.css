@@ -135,24 +135,20 @@ footer h3{
     background: #2f3640;
     color: #f5f6fa;
     padding: 0 32px;
-    box-shadow: 0 -2px 16px rgba(47,54,64,0.39); 
+    box-shadow: 0 -2px 16px rgba(47, 54, 64, 0.39);
+  
     transition: 400ms;
-}
-
-.cookie-container p {
-    line-height: 2;
-    margin: 0 24px;
-}
-
-.cookie-container .active {
+  }
+  
+  .cookie-container.active {
     bottom: 0;
-}
-
-.cookie-container a {
+  }
+  
+  .cookie-container a {
     color: #f5f6fa;
-}
-
-.cookie-btn {
+  }
+  
+  .cookie-btn {
     background: #e84118;
     border: 0;
     color: #f5f6fa;
@@ -161,8 +157,7 @@ footer h3{
     margin-bottom: 16px;
     border-radius: 8px;
     cursor: pointer;
-
-}
+  }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
 .column {
