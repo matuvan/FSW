@@ -113,36 +113,28 @@
         </div>
     </div>
 </footer>
-    
- <div class="wrapper">
-     <img src="cookie.png" alt="">
-     <div class="content">
-          <header>Cookie Constent</header>
-          <p>This website uses cookies to ensure you get the best experience on our website.</p>
-      </div>
-      <div class="buttons">
-            <button class="item">I understand</button>
-            <a href="#" class="item">Learn more</a>
-       </div>
-   </div>    
+
+<div class="cookie-container">
+    <p>We use cookie to ensure you have the best experience on our website.</p>
+    <button class="cookie-btn">I understand</button>
+    <a href="#">Learn more</a>
+</div>
 
 </body>
 
 <script>
-    const cookieBox = document.querySelector(".wrapper"),
-    acceptBtn = cookieBox.querySelector(".buttons button");
+    const cookieContainer = document.querySelector(".cookie-container")
+    const cookieButton = document.querySelector(".cookie-btn");
 
-    acceptBtn.onclick = ()=>{
-        document.cookie = "CookieBy=Group28; max-age="+60*60*24*30; 
-        if(document.cookie){
-            cookieBox.classList.add("hide");
-        }else {
-            alert("Cookie can't be set!");
-        }
-    }
+    cookieButton.addEventListener("click", () => {
+        cookieContainer.classList.remove("active");
+        localStorage.setItem("cookieBannerDisplayed", "true")
+    });
 
-    let checkCookie = document.cookie.indexOf("CookieBy=Group28");
-    checkCookie != 1 ? cookieBox.classList.add("hide"): cookieBox.classList.remove("hide");
+    setTimeout( () => {
+        if (!localStorage.getItem("cookieBannerDisplay", "false"))
+        cookieContainer.classList.add("active");
+    }, 2000)
 </script>
 
 </html>
