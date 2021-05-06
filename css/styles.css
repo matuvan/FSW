@@ -127,64 +127,41 @@ footer h3{
 }
 
 /* cookie styling */
-.wrapper {
-    position: absolute;
-    bottom: 30px;
-    left: 30px;
-    background: #fff;
-    max-width: 365px;
-    border-radius: 15px;
-    padding: 25px 25px 30px 25px;
+.cookie-container {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    background: #2f3640;
+    color: #f5f6fa;
+    padding: 0 32px;
+    box-shadow: 0 -2px 16px rgba(47,54,64,0.39); 
+    transition: 400ms;
 }
 
-.wrapper .hide{
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
+.cookie-container p {
+    line-height: 2;
+    margin: 0 24px;
 }
 
-.wrapper img {
-    max-width: 200px;
+.cookie-container .active {
+    bottom: 0;
 }
 
-.wrapper .content {
-    margin-top: 10px;
+.cookie-container a {
+    color: #f5f6fa;
 }
 
-.content header { 
-    font-size: 25px;
-    font-weight: 600;
-}
-
-.content p {
-    color: #858585;
-    margin: 5px 0 20px 0;
-}
-
-.content .buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.buttons .item {
-    margin: 0 10px;
-}
-
-.buttons button {
-    padding: 10px 20px;
-    background: #FCBA7F;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    font-weight: 500;
-    color: #fff;
+.cookie-btn {
+    background: #e84118;
+    border: 0;
+    color: #f5f6fa;
+    padding: 12px 48px;
+    font-size: 18px;
+    margin-bottom: 16px;
+    border-radius: 8px;
     cursor: pointer;
-    border-radius: 5px;
-}
 
-.buttons a {
-    color: #FCBA7F;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
