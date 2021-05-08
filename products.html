@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="storestyle.css">
+    <title>Products</title>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="store.html">HOME</a>
+            <div class="navbar-1">
+                <div class="subnav">
+                <button class="subnavbtn">PRODUCTS<i class="dropdown"></i></button>
+                <div class="subnav-content">
+                    <a href="Category.html">Browse Products by Category</a>
+                    <a href="createdtime.html">Browse Products by Created Time</a>
+                </div>
+            </div> 
+            <a href="ABOUTUS.html">ABOUT US</a>
+            <a href="CONTACT.html">CONTACT</a>
+            </div>
+    </header>
+    <main>
+        <div class="info">
+            <img src="shoes1.jpg" class="picture">
+            <h2 class="productname">Shoes1</h2>
+            <p class="productprice">$1.67</p>
+            <p>Running, Walking</p>
+            <p>High tech, prevent injury</p>
+            <div class="buy">
+                <button type="button" class="addcart">Add to Cart</button>
+                <button onclick="document.location='payment.html'" class="buynow">Move to Cart</button>
+            </div>
+        </div>
+        <div class="recompro">
+            <h1>Recommended Products</h1>
+        </div>
+        <div class="row">
+            <div class="column">
+                <a href="products.html"><img src="tshirt.jpg" alt="Details"></a>
+                <a href="products.html"><h2>T-Shirt</h2></a>
+                <p class="price">$1.23</p>
+            </div>
+            <div class="column">
+                <a href="products.html"><img src="shoes.jpg" alt="Details"></a>
+                <a href="products.html"><h2>Shoes</h2></a>
+                <p class="price">$1.45</p>
+            </div>
+            <div class="column">
+                <a href="products.html"><img src="shirt.jpg" alt="Details"></a>
+                <a href="products.html"><h2>Shirt</h2></a>
+                <p class="price">$1.56</p>
+            </div>
+            <div class="column">
+                <a href="products.html"><img src="shoes1.jpg" alt="Details"></a>
+                <a href="products.html"><h2>Shoes</h2></a>
+                <p class="price">$1.67</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="navbar-2">
+            <a href="Copyright.html">Copyright</a>
+            <a href="ToS.html">Term Of Service</a>
+            <a href="PrivacyPolicy.html">Privacy Policy</a>
+        </div>
+    </footer>
+    <script src="products.js"></script>
+</body>
+</html>
