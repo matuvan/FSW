@@ -2,6 +2,8 @@ const regBtn = document.getElementById('register-btn');
 regBtn.addEventListener("click", inputValidation);
 
 function inputValidation () {
+    var regPhone = document.getElementById('regPhone').value;
+
     var regPwd = document.getElementById('regPwd').value;
     var regRetype = document.getElementById('regRetype').value;
 
@@ -12,6 +14,17 @@ function inputValidation () {
     var regCity = document.getElementById('regCity').value;
 
     var regZip = document.getElementById('regZip').value;
+
+    // Phone number regex pattern (PSEUDO ONLY, not fully working due to 
+    // the complexity of the regex requirements)
+    var phonePattern = /^(?!-| |\.)(?!.*(--|  |\.\.|-\.|- | -| \.|\.-|\. ))([0-9-. ]{9,22})(?<!(-| |\.))$/;
+
+    if (!phonePattern.test(regPhone)){
+        document.getElementById("alertPhone").innerHTML = '<p style="color: red; font-size: 14px; text-align: left">Must start and end with a digit, 9-12 digits total,no consecutive dash/space/dot!</p>'    }
+    else {
+        document.getElementById("alertPhone").innerHTML = ''
+    }
+
 
     // Password regex pattern
     // (?!.*\s) = no whitespace characters
