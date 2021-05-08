@@ -25,7 +25,6 @@ function validLogin() {
         }
         else {
             document.getElementById("wrongPwd").innerHTML = '<p style="color: red; font-size: 14px"> Invalid password! (pst, it\'s "password")</p>'
-            document.getElementById("userLogin").value = '';
             document.getElementById("userPwd").value = '';
         }
     }
