@@ -6,4 +6,4 @@ Le Thanh Nguyen (s3638100): HTML & CSS: "My Account, Forgot Password, Register A
 
 Nguyen Huu Duc (s3669698): HTML & CSS:" Store Home, Browse Products,Product Detail, Order Placement, Sample Data"; Javascript:" NEW07,NEW08,NEW09"
 
-*Since the miscommunication between members, the NEW04 section of Javascript assignment was not be able to finish. By the time we solve the miscommunication, the deadline was only 2 hours far, therefore, despite having 2 members work on NEW04 section, it is still not able to complete it.*
+*Since the miscommunication between members, the NEW04 section of Javascript assignment was not be able to finish. By the time we solve the miscommunication, the deadline was only 1 hours far, therefore, despite having 2 members work on NEW04 section, it is still not able to complete it.*
