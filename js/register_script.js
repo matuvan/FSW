@@ -2,6 +2,8 @@ const regBtn = document.getElementById('register-btn');
 regBtn.addEventListener("click", inputValidation);
 
 function inputValidation () {
+    var regEmail = document.getElementById('regEmail').value;
+
     var regPhone = document.getElementById('regPhone').value;
 
     var regPwd = document.getElementById('regPwd').value;
@@ -14,6 +16,15 @@ function inputValidation () {
     var regCity = document.getElementById('regCity').value;
 
     var regZip = document.getElementById('regZip').value;
+
+    // Email regex pattern (PSEUDO, works quite well except for edge cases, needs improvements)
+    var emailPattern = /^(?!\.)(?!.*\.\.)([\w0-9.]+)[^.]@[^.](?!.*\.\.)[\w0-9]+(\.(\w+))*(\.([\w]{2,5}))$/;
+    if (!emailPattern.test(regEmail)){
+        document.getElementById("alertEmail").innerHTML = '<p style="color: red; font-size: 14px; text-align: left">Email cannot begin/end with period (before/after @ sign), no consecutive periods and min of 2, max of 5 characters for last domain</p>'    }
+    else {
+        document.getElementById("alertEmail").innerHTML = ''
+    }
+
 
     // Phone number regex pattern (PSEUDO ONLY, not fully working due to 
     // the complexity of the regex requirements)
