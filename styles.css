@@ -159,6 +159,14 @@ footer h3{
     }
 
 /* store carousel css */
+.slidecontainer {
+    margin: 0 auto;
+    width: 100%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+  }
+
 .slides {
   display: flex;
   height: 100%;
@@ -180,31 +188,6 @@ footer h3{
   justify-content: space-between;
   align-items: center;
 }
-
-/* product carousel */
-.sliders {
-    display: flex;
-    height: 100%;
-  }
-
-.slider {
-    min-width: 100%;
-    position: relative;
-  }
-  .slider img {
-    width: 250px;
-  }
-  .slider-controls {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-      
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
 .column {

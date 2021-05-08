@@ -1,4 +1,4 @@
-const slideContainer = document.querySelector('.container');
+const slideContainer = document.querySelector('.slidecontainer');
 const slide = document.querySelector('.slides');
 const interval = 3000;
 
