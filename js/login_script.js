@@ -24,7 +24,7 @@ function validLogin() {
             window.location.href = "logged-in.html";
         }
         else {
-            document.getElementById("wrongPwd").innerHTML = '<p style="color: red;"> Invalid password!</p>'
+            document.getElementById("wrongPwd").innerHTML = '<p style="color: red; font-size: 14px"> Invalid password! (pst, it\'s "password")</p>'
             document.getElementById("userLogin").value = '';
             document.getElementById("userPwd").value = '';
         }
