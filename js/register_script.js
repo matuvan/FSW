@@ -18,7 +18,7 @@ function inputValidation () {
     var regZip = document.getElementById('regZip').value;
 
     // Email regex pattern (PSEUDO, works quite well except for edge cases, needs improvements)
-    var emailPattern = /^(?!\.)(?!.*\.\.)([\w0-9.]+)[^.]@[^.](?!.*\.\.)[\w0-9]+(\.(\w+))*(\.([\w]{2,5}))$/;
+    var emailPattern = /^(?!\.)(?!.*\.\.)([\w.]+)[^.]@[^.](?!.*\.\.)[\w]+(\.(\w+))*(\.([A-Za-z]{2,5}))$/gm;
     if (!emailPattern.test(regEmail)){
         document.getElementById("alertEmail").innerHTML = '<p style="color: red; font-size: 14px; text-align: left">Email cannot begin/end with period (before/after @ sign), no consecutive periods and min of 2, max of 5 characters for last domain</p>'    }
     else {
