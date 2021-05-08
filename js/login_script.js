@@ -1,19 +1,6 @@
 const loginBtn = document.getElementById('login-btn');
 loginBtn.addEventListener("click", validLogin);
 
-const toAccount = document.getElementById('myAccount');
-toAccount.addEventListener("click", redirectAccount);
-
-function redirectAccount (){
-    if (typeof (Storage) !== 'undefined') {
-        if (localStorage.getItem("userLogin") === null) {
-            window.location.href = "login.html";
-        }
-        else {
-            window.location.href = "logged-in.html"
-        }
-    }
-}
 function validLogin() {
     let userLogin = document.getElementById('userLogin').value;
     let userPwd = document.getElementById('userPwd').value;
