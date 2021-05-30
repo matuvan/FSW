@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> Cinery | Online Shopping Mall</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+<!-- header -->
+<div class="container">
+    <div class="navbarhead">
+        <img src="logo.png">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="fees.html">Fees</a></li>
+                <li><a href="login.html">My Account</a></li>
+                <li class="dropdown">
+                    <a href="#">Browse</a>
+                    <span class="dropdown-content">
+                        <a href="browse-az.html">Browse by alphabet</a>
+                        <br><br><br>
+                        <a href="browse-type.html">Browse by type</a>
+                    </span>
+                </li>
+                <li><a href="faqs.html">FAQs</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>  
+<!-- footer -->
+<div class="container">
+    <div class="navbarfoot">
+        <nav>
+            <ul>
+                <li><a href="copyright.html">Copyright</a></li>
+                <li><a href="tos.html">Terms of Service</a></li>
+                <li><a href="pp.html">Privacy Policy</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+</body>
+
+</html>
