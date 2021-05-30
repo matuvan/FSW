@@ -79,7 +79,6 @@ class Login
         if ($this->verifyAdmin() != null) {
             $_SESSION['name'] = $this->username;
             $_SESSION['isAdmin'] = true;
-            $_SESSION['invalidLogin'] = '';
 
             header("Location: CMS.php");
             die();
@@ -92,8 +91,7 @@ class Login
             $_SESSION['phone'] = $data[1];
             $_SESSION['name'] = $data[2];
             $_SESSION['accountType'] = $data[3];
-            $_SESSION['isUser'] = true;
-            $_SESSION['invalidLogin'] = '';            
+            $_SESSION['isUser'] = true;    
 
             header("Location: logged-in.php");
             die();
@@ -101,8 +99,8 @@ class Login
         // neither, failed authentication
         } 
         else {
-            $_SESSION['invalidLogin'] = 'Invalid username or password!';
-            header("Location: login.php");
+            $_SESSION['invalidReason'] = 'Invalid username or password!';
+            header("Location: login.php?invalidLogin=true");
             die;
         }
     }

@@ -14,11 +14,9 @@ if (isset($_SESSION['isUser'])) {
   header("Location: logged-in.php");
 }
 
-if (isset($_SESSION['invalidLogin'])){
-  if (isset($_POST['submitLogin'])) {
-    $register = (new Login())->logIn();
-    die;
-  }
+if (isset($_POST['submitLogin'])) {
+  $register = (new Login())->logIn();
+  die;
 }
 
 
@@ -50,14 +48,19 @@ navModule("Cinery | Login");
 
           <button type="submit" name="submitLogin" id="login-btn" class="login-btn">Submit</button>
 
-          <div><?php echo '<p style="color: red; font-size: 13px; text-align: center">'. $_SESSION["invalidLogin"]. '</p>'; ?></div>
+          <div>
+            <?php
+          if (isset($_GET['invalidLogin']) && $_GET['invalidLogin']){
+            echo '<p style="color: red; font-size: 13px; text-align: center">'. $_SESSION["invalidReason"]. '</p>'; 
+          }
+            ?>
+           </div>
           <div class="create-account">
             <a href="forgotpwd.php">Forgot Password?</a>
             <p>Don't have an account? <a href="register.php">Register here</a></p>
           </div>
 
         </form>
-
 
       </div>
     </div>

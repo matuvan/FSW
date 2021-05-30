@@ -77,15 +77,29 @@ class Register
                 foreach ($data as $row => $data) {
     
                     $row_user = explode('|', $data);
-                    $this->readEmail = @trim($row_user[0]);
+                    $this->readEmail = @trim(strtolower($row_user[0]));
                     $this->readPhone = @trim($row_user[1]);
     
                     // check if user already exists
-                    if (strcmp($this->readEmail, $this->email) === 0 || strcmp($this->readPhone, $this->phone) === 0) {
+                    if (strcmp($this->readEmail, $this->email) === 0 && strcmp($this->readPhone, $this->phone) === 0) {
+                        $_SESSION['emailExists'] = 'This email is not available';
+                        $_SESSION['phoneExists'] = 'This phone number is not available';
                         return false;
                         break;
                     }
+
+                    elseif (strcmp($this->readEmail, $this->email) === 0) {
+                        $_SESSION['emailExists'] = 'This email is not available';
+                        break;
+                    }
+
+                    elseif (strcmp($this->readPhone, $this->phone) === 0) {
+                        $_SESSION['phoneExists'] = 'This phone number is not available';
+                        break;
+                    }
                 }
+                $_SESSION['emailExists'] = '';
+                $_SESSION['phoneExists']= '';
                 return true;
             }
             else {
@@ -106,11 +120,25 @@ class Register
                 $this->readPhone = @trim($row_user[1]);
 
                 // check if user already exists
-                if (strcmp($this->readEmail, $this->email) === 0 || strcmp($this->readPhone, $this->phone) === 0) {
+                if (strcmp($this->readEmail, $this->email) === 0 && strcmp($this->readPhone, $this->phone) === 0) {
+                    $_SESSION['emailExists'] = 'This email is not available';
+                    $_SESSION['phoneExists'] = 'This phone number is not available';
                     return false;
                     break;
                 }
+
+                elseif (strcmp($this->readEmail, $this->email) === 0) {
+                    $_SESSION['emailExists'] = 'This email is not available';
+                    break;
+                }
+
+                elseif (strcmp($this->readPhone, $this->phone) === 0) {
+                    $_SESSION['phoneExists'] = 'This phone number is not available';
+                    break;
+                }
             }
+            $_SESSION['emailExists'] = '';
+            $_SESSION['phoneExists']= '';
             return true;
         }
         else{
