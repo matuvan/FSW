@@ -64,6 +64,5 @@ navModule("Cinery | User Dashboard");
 // footer, edit in 'modules/footer.php'
 endModule();
 ?>
-<!-- <script src="js/myacc_script.js"></script> -->
 
 </html>

@@ -5,6 +5,15 @@ require_once 'modules/footer.php';
 
 session_start();
 
+// redirect based on superglobal login status
+if (isset($_SESSION['isAdmin'])) {
+    header("Location: CMS.php");
+  }
+  
+  if (isset($_SESSION['isUser'])) {
+    header("Location: logged-in.php");
+  }
+ 
 $emailError = $phoneError = $passwordError = $retypeError = $nameError = $addressError = $cityError =  $zipcodeError = $accountTypeError  = $extraStoreError = '';
 
 $allowRegister = true;
@@ -80,7 +89,6 @@ if (isset($_POST['submitRegister'])) {
         die();
     }    
 }
-
 
 // top module, then manually specified stylesheets, then navbar module
 // edit in 'modules/top.php'
@@ -183,8 +191,5 @@ navModule("Cinery | Register");
 // footer, edit in 'modules/footer.php'
 endModule();
 ?>
-    
-    <!-- <script src="js/register_script.js"></script> -->
-    <!-- <script src="js/account_redirect.js"></script> -->
-    
+
 </html>

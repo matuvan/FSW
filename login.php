@@ -5,6 +5,15 @@ require_once 'modules/footer.php';
 
 session_start();
 
+// redirect based on superglobal login status
+if (isset($_SESSION['isAdmin'])) {
+  header("Location: CMS.php");
+}
+
+if (isset($_SESSION['isUser'])) {
+  header("Location: logged-in.php");
+}
+
 if  (isset($_POST['submitLogin'])) {
   $register = (new Login())->logIn();
   die;
@@ -53,7 +62,5 @@ navModule("Cinery | Login");
 // footer, edit in 'modules/footer.php'
 endModule();
 ?>
-<!-- <script src="js/login_script.js"></script> -->
-<script src="js/account_redirect.js"></script>
 
 </html>

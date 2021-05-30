@@ -38,6 +38,5 @@ navModule("Cinery | Forgot Password");
 // footer, edit in 'modules/footer.php'
 endModule();
 ?>
-    <script src="js/account_redirect.js"></script>
     
 </html>

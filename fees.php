@@ -61,6 +61,4 @@ navModule("Cinery | Fees");
 endModule();
 ?>
 
-<script src="js/account_redirect.js"></script>
-
 </html>

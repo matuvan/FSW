@@ -5,12 +5,13 @@ require_once 'modules/footer.php';
 // top module, then manually specified stylesheets, then navbar module
 // edit in 'modules/top.php'
 topModule();
+
   echo '<link rel="stylesheet" href="css/styles.css">';
   echo '<link rel="stylesheet" href="css/contact.css">';
 navModule("Cinery | Contact");
 ?>  
 <main>
-        <h3>Contact Form</h3>
+        <h3 style="text-align:center">Contact Form</h3>
         
     <div class="container">
         <form action="get">
@@ -57,6 +58,5 @@ navModule("Cinery | Contact");
 // footer, edit in 'modules/footer.php'
 endModule();
 ?>
-<script src="js/account_redirect.js"></script>
 
 </html>

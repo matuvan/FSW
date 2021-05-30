@@ -80,7 +80,7 @@ class Login
             $_SESSION['name'] = $this->username;
             $_SESSION['isAdmin'] = true;
 
-            header("Location: dashboard.php");
+            header("Location: CMS.php");
             die();
         }
 

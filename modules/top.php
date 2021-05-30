@@ -24,7 +24,14 @@ function navModule($pageTitle){
                         <li><a href="index.php">Home</a></li>
                         <li><a href="aboutus.php">About Us</a></li>
                         <li><a href="fees.php">Fees</a></li>
-                        <li><a href="login.php">My Account</a></li>
+                        <li class="dropdown">
+                            <a href="#">My Account</a>
+                            <span class="dropdown-content">
+                                <a href="login.php">Login</a>
+                                <br><br><br>
+                                <a href="register.php">Register</a>
+                            </span>
+                        </li>
                         <li class="dropdown">
                             <a href="#">Browse</a>
                             <span class="dropdown-content">
