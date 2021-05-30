@@ -92,7 +92,7 @@ fieldset,
     display: none;
 }
 
-#rad1:checked+.store-extra {
+#rad1:checked+#type-label+div+.store-extra {
     display: block;
 }
 
@@ -132,6 +132,10 @@ fieldset,
 .has-account>p,
 .has-account>a  {
     font-size: 14px;
+}
+
+input[type="radio"]:checked+label { 
+    color: green;
 }
 
 .has-account {

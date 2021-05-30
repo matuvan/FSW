@@ -4,6 +4,10 @@ require_once 'modules/footer.php';
 
 // top module, then manually specified stylesheets, then navbar module
 // edit in 'modules/top.php'
+
+session_start();
+
+
 topModule();  
   echo '<link rel="stylesheet" href="css/styles.css">';
   echo '<link rel="stylesheet" href="css/logged-in.css">';
@@ -22,7 +26,7 @@ navModule("Cinery | User Dashboard");
                     <div class="avatar-div">
                         <p>nguyenvana123</p>
                         <img src="media/placeholder-avatar.png" alt="avatar">
-                        <p>Account type: Shopper</p>
+                        <p>Account type: <?php echo $_SESSION['accountType']; ?></p>
                     </div>
 
                     <div class="header-div">

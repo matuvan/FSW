@@ -3,7 +3,8 @@
 class Login
 {
     public $username;
-    public $readUsername;
+    public $readEmail;
+    public $readPhone;
     public $password;
     public $readPassword;
 
@@ -13,8 +14,8 @@ class Login
     public function __construct()
     {
         // sanitize inputs for safety and consistency
-        $this->username = @htmlentities(strtolower($_POST['username']));
-        $this->password = @htmlentities(strtolower($_POST['password']));
+        $this->username = @trim(htmlentities(strtolower($_POST['username'])));
+        $this->password = @trim(htmlentities($_POST['password']));
     }
 
     // separate user verification function to authenticate normal users
@@ -27,11 +28,12 @@ class Login
             foreach ($data as $row => $data) {
 
                 $row_user = explode('|', $data);
-                $this->readUsername = @(strtolower($row_user[0]));
-                $this->readPassword = @trim(strtolower($row_user[1]), "\r");
+                $this->readEmail = @trim(strtolower($row_user[0]));
+                $this->readPhone = @trim($row_user[1]);
+                $this->readPassword = @trim($row_user[2]);
 
                 // check for both username and password for a match in the "database"
-                if (strcmp($this->readUsername, $this->username) === 0 && strcmp($this->readPassword, $this->password) === 0) {
+                if ((strcmp($this->readEmail, $this->username) === 0 || strcmp($this->readPhone, $this->username) === 0) && password_verify($this->password, $this->readPassword)) {
                     return true;
                 }
             }
@@ -49,10 +51,11 @@ class Login
             foreach ($data as $row => $data) {
                 $row_user = explode('|', $data);
 
-                $this->readUsername = @(strtolower($row_user[0]));
-                $this->readPassword = @trim(strtolower($row_user[1]), "\r");
+                $this->readUsername = @trim(strtolower($row_user[0]));
+                $this->readPassword = @trim(strtolower($row_user[1]));
 
-                if (strcmp($this->readUsername, $this->username) === 0 && strcmp($this->readPassword, $this->password) === 0) {
+
+                if (strcmp($this->readUsername, $this->email) === 0 && password_verify($this->password, $readPassword)) {
                     return true;
                 }
             }
@@ -63,7 +66,7 @@ class Login
 
     public function logIn()
     {
-        // first check to see if it's an admin
+        // first, see if it's an admin
         if ($this->verifyAdmin()) {
             $_SESSION['username'] = $this->username;
             $_SESSION['password'] = $this->password;
@@ -81,7 +84,8 @@ class Login
 
             header("Location: logged-in.php");
             die();
-            // neither, failed authentication
+
+        // neither, failed authentication
         } 
         else {
             echo '<b>Invalid username Or password!</b><br>';

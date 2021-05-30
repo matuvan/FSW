@@ -6,9 +6,8 @@ require_once 'modules/footer.php';
 session_start();
 
 if  (isset($_POST['submitLogin'])) {
-
-    $login = (new Login())->logIn();
-    die;
+  $register = (new Login())->logIn();
+  die;
 }
 
 // top module, then manually specified stylesheets, then navbar module
@@ -28,7 +27,7 @@ navModule("Cinery | Login");
           <h1 class="top-text">Login</h1>
         </div>
 
-        <form id="login-form" method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>" class="input-group">
+        <form id="login-form" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" class="input-group">
           <input type="text" name="username" id="userLogin" class="input-field" placeholder="Enter email address or phone number"
             required>
           <input type="password" name="password" id="userPwd" class="input-field" placeholder="Enter password" required>

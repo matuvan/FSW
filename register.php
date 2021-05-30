@@ -5,11 +5,82 @@ require_once 'modules/footer.php';
 
 session_start();
 
-if  (isset($_POST['submitRegister'])) {
+$emailError = $phoneError = $passwordError = $retypeError = $nameError = $addressError = $cityError =  $zipcodeError = $accountTypeError  = $extraStoreError = '';
 
-    $register = (new Register())->register();
-    die;
+$allowRegister = true;
+
+// regexes taken from previous JS assignment, in 'js/register_script.js'
+
+$emailPattern = "/^(?!\.)(?!.*\.\.)([\w.]+)[^.]@[^.](?!.*\.\.)[\w]+(\.(\w+))*(\.([A-Za-z]{2,5}))$/";
+$phonePattern = "/^(?!-| |\.)(?!.*(--|  |\.\.|-\.|- | -| \.|\.-|\. ))([0-9-. ]{9,22})(?<!(-| |\.))$/";
+$passwordPattern = "/^(?!.*\s)(?=.*\d)(?=.*[!@#\$%\^&\*])(?=.*[A-Z])(?=.*[a-z])(.{8,20})$/";
+$genericPattern = "/^(.{3,})$/";
+$genericPattern2 = "/^(\D{3,})$/";
+$zipPattern = "/^(\d{4,6})$/";
+
+if (isset($_POST['submitRegister'])) {    
+    if (!preg_match($emailPattern, $_POST['email'])){
+        $emailError = '<p style="color: red; font-size: 12px; text-align: left">Email cannot begin/end with period (before/after @ sign), no consecutive periods and min of 2, max of 5 characters for last domain</p>';
+        $allowRegister = false;
+    }
+    if (!preg_match($passwordPattern, $_POST['password'])){
+        $passwordError = '<p style="color: red; font-size: 12px; text-align: left">Password must contain lowercase, uppercase, digit and special characters!</p>';
+        $allowRegister = false;
+    }
+
+    if (!preg_match($phonePattern,$_POST['phone'])){
+        $phoneError = '<p style="color: red; font-size: 12px; text-align: left">Phone no. starts and ends with a digit, 9-12 digits total, no consecutive dash/space/dot!</p>';
+        $allowRegister = false;
+    }
+
+    if ($_POST['retypePassword'] != $_POST['password']){
+        $retypeError = '<p style="color: red; font-size: 12px; text-align: left">Retyped password does not match!</p>';
+        $allowRegister = false;
+    }
+
+    if (!preg_match($genericPattern2,$_POST['firstName'])){
+        $nameError = '<p style="color: red; font-size: 12px; text-align: left">Name can only contain letters, minimum of 3 characters!</p>';
+        $allowRegister = false;
+    }
+
+    if (!preg_match($genericPattern2,$_POST['lastName'])){
+        $nameError = '<p style="color: red; font-size: 12px; text-align: left">Name can only contain letters, minimum of 3 characters!</p>';
+        $allowRegister = false;
+    }
+
+    if (!preg_match($genericPattern,$_POST['address'])){
+        $addressError = '<p style="color: red; font-size: 12px; text-align: left">Address must only contain minimum of 3 characters!</p>';
+        $allowRegister = false;
+    }
+
+    if (!preg_match($genericPattern2,$_POST['city'])){
+        $cityError = '<p style="color: red; font-size: 12px; text-align: left">City must only contain minimum of 3 characters!</p>';
+        $allowRegister = false;
+    }
+
+    if (!preg_match($zipPattern,$_POST['zipcode'])){
+        $zipcodeError = '<p style="color: red; font-size: 12px; text-align: left">Zipcode must contain minimum of 4 and maximum of 6 digits!</p>';
+        $allowRegister = false;
+    }
+    
+    if(!isset($_POST['rad'])){
+        $accountTypeError = '<p style="color: red; font-size: 12px; text-align: center">Please select an account type</p>';
+        $allowRegister = false;
+    }
+
+    elseif ($_POST['rad'] == 'storeOwner'){
+        if (!preg_match($genericPattern2,$_POST['businessName']) || !preg_match($genericPattern2,$_POST['storeName'])){
+            $extraStoreError = '<p style="color: red; font-size: 12px; text-align: left">Please fill out bussiness and store name with minimum of 3 characters.</p>';
+            $allowRegister = false;
+        }
+    }
+
+    if ($allowRegister) {        
+        $login = (new Register())->register();
+        die();
+    }    
 }
+
 
 // top module, then manually specified stylesheets, then navbar module
 // edit in 'modules/top.php'
@@ -28,38 +99,49 @@ navModule("Cinery | Register");
                 <h1 class="top-text">Register</h1>
             </div>
 
-            <form id="register-form" method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>" class="input-group">
-                <input type="email" name="username" class="input-field" id="regEmail" placeholder="Email address" required>
-                <!-- <div id="alertEmail"></div>
-                <input type="text" name="phone"class="input-field" id="regPhone" placeholder="Phone number" required>
-                <div id="alertPhone"></div> -->
-                <input type="password" name="password" class="input-field"  id="regPwd" placeholder="Password" required>
-                <div id="alertPwd"></div>
-                <!-- <input type="password" class="input-field" id="regRetype" placeholder="Retype password" required>
-                <div id="alertRetype"></div>
-                <input type="text" id="regFName" class="input-field-first" placeholder="First name" required>
-                <input type="text" id="regLName" class="input-field-last" placeholder="Last name" required>
-                <div id="alertName"></div>
-                <input type="text" id="regAddress" class="input-field" placeholder="Address" required>
-                <div id="alertAddress"></div>
-                <input type="text" id="regCity" class="input-field" placeholder="City" required>
-                <div id="alertCity"></div>
-                <input type="number" id="regZip" class="input-field" placeholder="Zip code" required>
-                <div id="alertZip"></div>
+            <form id="register-form" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" class="input-group">
+                <input type="email" name="email" class="input-field" id="" placeholder="Email address" required>
+                <div id="alertEmail"> <?php echo $emailError; ?></div>
+
+                <input type="text" name="phone" class="input-field" id="" placeholder="Phone number" required>
+                <div id=""><?php echo $phoneError; ?></div>
+
+                <input type="password" name="password" class="input-field"  id="" placeholder="Password" required>
+                <div id=""><?php echo $passwordError; ?></div>
+
+                <input type="password" name="retypePassword" class="input-field" id="" placeholder="Retype password" required>
+                <div id=""><?php echo $retypeError; ?></div>
+                
+                <input type="text" name="firstName" id="" class="input-field-first" placeholder="First name" required>
+
+                <input type="text" name="lastName" id="" class="input-field-last" placeholder="Last name" required>
+                <div id=""><?php echo $nameError; ?></div>
+
+                <input type="text" name="address" id="regAddress" class="input-field" placeholder="Address" required>
+                <div id=""><?php echo $addressError; ?></div>
+
+                <input type="text" name="city" id="regCity" class="input-field" placeholder="City" required>
+                <div id=""><?php echo $cityError; ?></div>
+
+                <input type="number" name="zipcode" id="regZip" class="input-field" placeholder="Zip code" required>
+                <div id=""><?php echo $zipcodeError; ?></div>
 
                 <fieldset>
                     <legend>Account Type</legend>
+
+                    <input id="rad0" class="rad" name="rad" value="shopper" type="radio">
                     <label for="rad0" class="btn" id="type-label">Shopper</label>
-                    <input id="rad0" class="rad" name="rad" type="radio">
+
+                    <input id="rad1" class="rad" name="rad" value="storeOwner" type="radio">
                     <label for="rad1" class="btn" id="type-label">Store owner</label>
-                    <input id="rad1" class="rad" name="rad" type="radio">
+                    <div ><?php echo $accountTypeError; ?></div>
 
                     <div class="store-extra">
                         <div id="store-owner">
-                            <input type="text" class="input-field" placeholder="Business name">
-                            <input type="text" class="input-field" placeholder="Store name">
+                            <input type="text" name="businessName" class="input-field" placeholder="Business name">
+                            <input type="text" name ="storeName" class="input-field" placeholder="Store name">
 
-                            <label for="store-type" id="category-label">Store category:</label>
+                            <label for="store-type" id="category-label">Store category:</label>                           
 
                             <select name="store-type" id="store-type">
                                 <option value="Department">Department</option>
@@ -83,7 +165,7 @@ navModule("Cinery | Register");
 
                 <input type="checkbox" id="terms" class="terms">
                 <label for="terms" class="terms-label">I agree to the terms and
-                    conditions</label> -->
+                    conditions</label>
 
                 <input class="clear-btn" type="reset" value="Clear form">
 
