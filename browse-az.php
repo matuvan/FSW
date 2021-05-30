@@ -1,31 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+require_once 'modules/top.php';
+require_once 'modules/footer.php';
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/browse-az.css">
-    <link rel="stylesheet" href="css/storestyle.css">
-    <title>Browse by alphabet</title>
-</head>
-
-<body>
-        <header>
-            <div class="navbar">
-                <a href="store.html">HOME</a>
-                <div class="navbar-1">
-                    <div class="subnav">
-                    <button class="subnavbtn">PRODUCTS<i class="dropdown"></i></button>
-                    <div class="subnav-content">
-                        <a href="category.html">Browse Products by Category</a>
-                        <a href="createdtime.html">Browse Products by Created Time</a>
-                    </div>
-                </div> 
-                <a href="index.html">MALL</a>
-                <a href="aboutus.html">ABOUT US</a>
-                <a href="contact.html">CONTACT</a>
-                </div>
-        </header>
+// top module, then manually specified stylesheets, then navbar module
+// edit in 'modules/top.php'
+topModule();  
+  echo '<link rel="stylesheet" href="css/browse-az.css">';
+  echo '<link rel="stylesheet" href="css/storestyle.css">';
+  echo '<link rel="stylesheet" href="css/styles.css">';
+navModule("Cinery | Browse Stores");
+?>
         <main>
             <div class="main-a">
                 <h1>New Products</h1>
@@ -90,13 +74,10 @@
     
             </div>
         </main>
-        <footer>
-            <div class="navbar-2">
-                <a href="copyright.html">Copyright</a>
-                <a href="tos.html">Term Of Service</a>
-                <a href="pp.html">Privacy Policy</a>
-            </div>
-        </footer>
-</body>
+
+<?php
+// footer, edit in 'modules/footer.php'
+endModule();
+?>
 
 </html> 
