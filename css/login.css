@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
     box-sizing: border-box;
 }
 
@@ -99,91 +98,3 @@ body {
 #login-form{
     display: inline-block;
 }
-.navbarhead{
-    display: flex;
-    align-items: center;
-    padding: auto;
-    background-color: #AFD3FA;
-}
-
-.navbarhead nav{
-    flex: 1;
-    text-align: right;
-}
-
-.navbarhead nav ul {
-    display: inline-block;
-    list-style-type: none;
-}
-
-.navbarhead nav ul li{
-    display: inline-block;
-    margin-right: 20px;
-}
-
-img {
-    width: 250px;
-}
-
-.navbarhead a{
-    color: black;
-    font-size: 20px;
-}
-
-.container{
-    float: left;
-    width: 25%;
-    text-align: center;
-    box-sizing: border-box;
-    width: 100%;
-    margin: auto;
-}
-
-footer h3{
-    color: whitesmoke;
-}
-
-.navbarfoot{
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    background-color: black;
-}
-
-.navbarfoot nav{
-    flex: 1;
-    text-align: center;
-}
-
-.navbarfoot a{
-    color: white;
-    font-size: 20px;
-}
-
-.navbarfoot nav ul {
-    display: inline-block;
-    list-style-type: none;
-}
-
-.navbarfoot nav ul li{
-    display: inline-block;
-    margin-right: 20px;
-}
-
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-    .column {
-        width: 25%;
-        }
-    }
-    
-    @media screen and (min-width: 1024px) {
-    .column {
-        width: 25%;
-        }
-    }
-    
-    @media screen and (max-width: 767px) {
-        .column {
-            width: 50%;
-            }
-        }

@@ -79,6 +79,7 @@ class Login
         if ($this->verifyAdmin() != null) {
             $_SESSION['name'] = $this->username;
             $_SESSION['isAdmin'] = true;
+            $_SESSION['invalidLogin'] = '';
 
             header("Location: CMS.php");
             die();
@@ -92,7 +93,7 @@ class Login
             $_SESSION['name'] = $data[2];
             $_SESSION['accountType'] = $data[3];
             $_SESSION['isUser'] = true;
-            
+            $_SESSION['invalidLogin'] = '';            
 
             header("Location: logged-in.php");
             die();
@@ -100,9 +101,8 @@ class Login
         // neither, failed authentication
         } 
         else {
-            echo '<b>Invalid username Or password!</b><br>';
-            echo '<b>Redirecting back to login after 3 seconds...</b>';
-            header("refresh:3; url=login.php");
+            $_SESSION['invalidLogin'] = 'Invalid username or password!';
+            header("Location: login.php");
             die;
         }
     }

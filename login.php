@@ -14,16 +14,20 @@ if (isset($_SESSION['isUser'])) {
   header("Location: logged-in.php");
 }
 
-if  (isset($_POST['submitLogin'])) {
-  $register = (new Login())->logIn();
-  die;
+if (isset($_SESSION['invalidLogin'])){
+  if (isset($_POST['submitLogin'])) {
+    $register = (new Login())->logIn();
+    die;
+  }
 }
+
+
 
 // top module, then manually specified stylesheets, then navbar module
 // edit in 'modules/top.php'
 topModule();
-  echo '<link rel="stylesheet" href="css/styles.css">';
   echo '<link rel="stylesheet" href="css/login.css">';
+  echo '<link rel="stylesheet" href="css/styles.css">';
 navModule("Cinery | Login");
 ?>
 
@@ -46,6 +50,7 @@ navModule("Cinery | Login");
 
           <button type="submit" name="submitLogin" id="login-btn" class="login-btn">Submit</button>
 
+          <div><?php echo '<p style="color: red; font-size: 13px; text-align: center">'. $_SESSION["invalidLogin"]. '</p>'; ?></div>
           <div class="create-account">
             <a href="forgotpwd.php">Forgot Password?</a>
             <p>Don't have an account? <a href="register.php">Register here</a></p>
