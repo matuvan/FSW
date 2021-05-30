@@ -26,7 +26,7 @@ class Login
 
             foreach ($data as $row => $data) {
 
-                $row_user = explode(',', $data);
+                $row_user = explode('|', $data);
                 $this->readUsername = @(strtolower($row_user[0]));
                 $this->readPassword = @trim(strtolower($row_user[1]), "\r");
 
@@ -47,7 +47,7 @@ class Login
             $data = explode("\n", $d);
 
             foreach ($data as $row => $data) {
-                $row_user = explode(',', $data);
+                $row_user = explode('|', $data);
 
                 $this->readUsername = @(strtolower($row_user[0]));
                 $this->readPassword = @trim(strtolower($row_user[1]), "\r");

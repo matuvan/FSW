@@ -1,6 +1,15 @@
 <?php
+require_once 'phpClass/registerController.php';
 require_once 'modules/top.php';
 require_once 'modules/footer.php';
+
+session_start();
+
+if  (isset($_POST['submitRegister'])) {
+
+    $register = (new Register())->register();
+    die;
+}
 
 // top module, then manually specified stylesheets, then navbar module
 // edit in 'modules/top.php'
@@ -19,14 +28,14 @@ navModule("Cinery | Register");
                 <h1 class="top-text">Register</h1>
             </div>
 
-            <form id="register-form" class="input-group">
-                <input type="email" name="email" class="input-field" id="regEmail" placeholder="Email address" required>
-                <div id="alertEmail"></div>
+            <form id="register-form" method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>" class="input-group">
+                <input type="email" name="username" class="input-field" id="regEmail" placeholder="Email address" required>
+                <!-- <div id="alertEmail"></div>
                 <input type="text" name="phone"class="input-field" id="regPhone" placeholder="Phone number" required>
-                <div id="alertPhone"></div>
+                <div id="alertPhone"></div> -->
                 <input type="password" name="password" class="input-field"  id="regPwd" placeholder="Password" required>
                 <div id="alertPwd"></div>
-                <input type="password" class="input-field" id="regRetype" placeholder="Retype password" required>
+                <!-- <input type="password" class="input-field" id="regRetype" placeholder="Retype password" required>
                 <div id="alertRetype"></div>
                 <input type="text" id="regFName" class="input-field-first" placeholder="First name" required>
                 <input type="text" id="regLName" class="input-field-last" placeholder="Last name" required>
@@ -74,11 +83,11 @@ navModule("Cinery | Register");
 
                 <input type="checkbox" id="terms" class="terms">
                 <label for="terms" class="terms-label">I agree to the terms and
-                    conditions</label>
+                    conditions</label> -->
 
                 <input class="clear-btn" type="reset" value="Clear form">
 
-                <button type="button" id="register-btn" class="register-btn">Register</button>
+                <button type="submit" name="submitRegister" id="register-btn" class="register-btn">Register</button>
                 <div class="has-account">
                     <p>Already have an account? <a href="login.html">Sign in</a></p>
                 </div>
@@ -93,7 +102,7 @@ navModule("Cinery | Register");
 endModule();
 ?>
     
-    <script src="js/register_script.js"></script>
-    <script src="js/account_redirect.js"></script>
+    <!-- <script src="js/register_script.js"></script> -->
+    <!-- <script src="js/account_redirect.js"></script> -->
     
 </html>
