@@ -50,6 +50,30 @@ class Login
         return null;
     }
 
+    public function verifyStoreOwner()
+    {
+        if (file_exists("../storeOwners.txt")) {
+            $d = file_get_contents("../storeOwners.txt");
+            $data = explode("\n", $d);
+
+            foreach ($data as $row => $data) {
+
+                $row_user = explode('|', $data);
+                $this->readEmail = @trim(strtolower($row_user[0]));
+                $this->readPhone = @trim($row_user[1]);
+                $this->readPassword = @trim($row_user[2]);
+                $this->readName = @trim($row_user[3]) . ' ' . @trim($row_user[4]);
+                $this->readAccountType = @trim($row_user[6]);
+
+                // check for both username and password for a match in the "database"
+                if ((strcmp($this->readEmail, $this->username) === 0 || strcmp($this->readPhone, $this->username) === 0) && password_verify($this->password, $this->readPassword)) {
+
+                    return array($this->readEmail,$this->readPhone,$this->readName,$this->readAccountType);
+                }
+            }
+        }        
+        return null;
+    }
     // separate user verification function to authenticate admins
     public function verifyAdmin()
     {
@@ -84,6 +108,19 @@ class Login
             die();
         }
 
+        // check if it's a store owner
+        elseif ($this->verifyStoreOwner()!= null) {
+            $data = $this->verifyStoreOwner();
+            $_SESSION['email'] = $data[0];
+            $_SESSION['phone'] = $data[1];
+            $_SESSION['name'] = $data[2];
+            $_SESSION['accountType'] = $data[3];
+            $_SESSION['isUser'] = true;    
+
+            header("Location: logged-in.php");
+            die();        
+        } 
+
         // otherwise, must be an user
         elseif ($this->verifyUser()!= null) {
             $data = $this->verifyUser();
@@ -94,10 +131,10 @@ class Login
             $_SESSION['isUser'] = true;    
 
             header("Location: logged-in.php");
-            die();
+            die();        
+        } 
 
         // neither, failed authentication
-        } 
         else {
             $_SESSION['invalidReason'] = 'Invalid username or password!';
             header("Location: login.php?invalidLogin=true");

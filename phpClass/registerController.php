@@ -38,16 +38,16 @@ class Register
         $this->accountType = @htmlentities($_POST['rad']);
         $this->businessName = @htmlentities($_POST['businessName']);
         $this->storeName = @htmlentities($_POST['storeName']);
-        $this->storeType = $_POST['storeType'];
+        $this->storeType = $_POST['store-type'];
     }
 
     public function register()
     {
         if ($this -> isEmailAndPhoneAvailable()) {
-            if ($this->accountType == 'storeOwner'){
+            if ($this->accountType == 'Store Owner'){
                 $data = array($this->email, $this->phone,$this->password, $this->firstName, $this->lastName,  $this->address,$this->accountType, $this->businessName, $this->storeName, $this->storeType);
                 $loginInfo = implode('|',$data);
-                file_put_contents("../stores.txt", $loginInfo.PHP_EOL, FILE_APPEND);
+                file_put_contents("../storeOwners.txt", $loginInfo.PHP_EOL, FILE_APPEND);
                 echo '<b>Successfully registered!</b><br>';
                 header("refresh:3; url=login.php");
                 die;
@@ -56,7 +56,8 @@ class Register
                 $data = array($this->email, $this->phone,$this->password, $this->firstName, $this->lastName,  $this->address,$this->accountType);
                 $loginInfo = implode('|',$data);
                 file_put_contents("../users.txt", $loginInfo.PHP_EOL, FILE_APPEND);
-                echo '<b>Successfully registered!</b><br>';
+                echo '<b style="text-align:center">Successfully registered!</b><br>';
+                echo '<b style="text-align:center">Redirecting to login page in 3 seconds...</b><br>';
                 header("refresh:3; url=login.php");
                 die;
             }
@@ -70,8 +71,8 @@ class Register
 
     public function isEmailAndPhoneAvailable(){
         if ($this->accountType == 'storeOwner'){
-            if (file_exists("../stores.txt")){
-                $d = file_get_contents("../stores.txt");
+            if (file_exists("../storeOwners.txt")){
+                $d = file_get_contents("../storeOwners.txt");
                 $data = explode("\n", $d);
     
                 foreach ($data as $row => $data) {
@@ -103,7 +104,7 @@ class Register
                 return true;
             }
             else {
-                $files = fopen("../stores.txt","x");
+                $files = fopen("../storeOwners.txt","x");
                 fwrite($files,'');
                 fclose($files);
                 return true;
