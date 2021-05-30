@@ -1,4 +1,5 @@
 <?php
+require_once 'phpClass/loginController.php';
 require_once 'modules/top.php';
 require_once 'modules/footer.php';
 
@@ -6,6 +7,16 @@ require_once 'modules/footer.php';
 // edit in 'modules/top.php'
 
 session_start();
+
+if (!isset($_SESSION['isUser'])) {
+    header("Location: login.php");
+}
+
+if (isset($_POST['submitLogOut'])) {
+
+    $logout = (new Login())->logOut();
+    
+}
 
 
 topModule();  
@@ -24,23 +35,24 @@ navModule("Cinery | User Dashboard");
 
                 <div class="container-div">
                     <div class="avatar-div">
-                        <p>nguyenvana123</p>
                         <img src="media/placeholder-avatar.png" alt="avatar">
                         <p>Account type: <?php echo $_SESSION['accountType']; ?></p>
                     </div>
 
                     <div class="header-div">
-                        <h2>Update information</h2>
+                        <h2>Account information</h2>
                     </div>
 
                     <div class="info-div">
                         <h5>Full name:</h5>
-                        <input type="text" class="input-field" value="Nguyen Van A">
+                        <input type="text" class="input-field" value="<?php echo $_SESSION['name'] ?>">
                         <h5>Email address:</h5>
-                        <input id="currentUser" type="email" class="input-field" value="nguyenvana@gmail.com">
+                        <input id="currentUser" type="email" class="input-field" value="<?php echo $_SESSION['email'] ?> ">
                         <h5>Phone number:</h5>
-                        <input type="number" class="input-field" value="0912345678">
-                        <button id="logout-btn" type="submit" class="btn">Log out</button>
+                        <input type="number" class="input-field" value="<?php echo $_SESSION['phone'] ?>">
+                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+                        <button id="logout-btn" name="submitLogOut" type="submit" class="btn">Log out</button>
+                        </form>
                     </div>
                 </div>
 
@@ -52,6 +64,6 @@ navModule("Cinery | User Dashboard");
 // footer, edit in 'modules/footer.php'
 endModule();
 ?>
-<script src="js/myacc_script.js"></script>
+<!-- <script src="js/myacc_script.js"></script> -->
 
 </html>

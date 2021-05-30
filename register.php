@@ -129,10 +129,10 @@ navModule("Cinery | Register");
                 <fieldset>
                     <legend>Account Type</legend>
 
-                    <input id="rad0" class="rad" name="rad" value="shopper" type="radio">
+                    <input id="rad0" class="rad" name="rad" value="Shopper" type="radio">
                     <label for="rad0" class="btn" id="type-label">Shopper</label>
 
-                    <input id="rad1" class="rad" name="rad" value="storeOwner" type="radio">
+                    <input id="rad1" class="rad" name="rad" value="Store Owner" type="radio">
                     <label for="rad1" class="btn" id="type-label">Store owner</label>
                     <div ><?php echo $accountTypeError; ?></div>
 

@@ -2,14 +2,20 @@
 
 class Login
 {
-    public $username;
+    public $username;    
+    public $password;
+
+
     public $readEmail;
     public $readPhone;
-    public $password;
+    public $readName;
+    public $readAccountType;
     public $readPassword;
 
     // initialize array to place lines fed from text files later
     public $data;
+
+    public $sessionUser;
 
     public function __construct()
     {
@@ -31,14 +37,17 @@ class Login
                 $this->readEmail = @trim(strtolower($row_user[0]));
                 $this->readPhone = @trim($row_user[1]);
                 $this->readPassword = @trim($row_user[2]);
+                $this->readName = @trim($row_user[3]) . ' ' . @trim($row_user[4]);
+                $this->readAccountType = @trim($row_user[6]);
 
                 // check for both username and password for a match in the "database"
                 if ((strcmp($this->readEmail, $this->username) === 0 || strcmp($this->readPhone, $this->username) === 0) && password_verify($this->password, $this->readPassword)) {
-                    return true;
+
+                    return array($this->readEmail,$this->readPhone,$this->readName,$this->readAccountType);
                 }
             }
         }        
-        return false;
+        return null;
     }
 
     // separate user verification function to authenticate admins
@@ -67,9 +76,8 @@ class Login
     public function logIn()
     {
         // first, see if it's an admin
-        if ($this->verifyAdmin()) {
-            $_SESSION['username'] = $this->username;
-            $_SESSION['password'] = $this->password;
+        if ($this->verifyAdmin() != null) {
+            $_SESSION['name'] = $this->username;
             $_SESSION['isAdmin'] = true;
 
             header("Location: dashboard.php");
@@ -77,10 +85,14 @@ class Login
         }
 
         // otherwise, must be an user
-        elseif ($this->verifyUser()) {
-            $_SESSION['username'] = $this->username;
-            $_SESSION['password'] = $this->password;
+        elseif ($this->verifyUser()!= null) {
+            $data = $this->verifyUser();
+            $_SESSION['email'] = $data[0];
+            $_SESSION['phone'] = $data[1];
+            $_SESSION['name'] = $data[2];
+            $_SESSION['accountType'] = $data[3];
             $_SESSION['isUser'] = true;
+            
 
             header("Location: logged-in.php");
             die();
