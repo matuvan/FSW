@@ -3,24 +3,25 @@ require_once 'phpClass/loginController.php';
 require_once 'modules/top.php';
 require_once 'modules/footer.php';
 
-// top module, then manually specified stylesheets, then navbar module
-// edit in 'modules/top.php'
-
 session_start();
 
-if (isset($_SESSION['isAdmin'])) {
-    header("Location: CMS.php");
-}
+// redirect to CMS page here (unimplemented as of now), do nothing
+// if (isset($_SESSION['isAdmin'])) {
+//     header("Location: CMS.php");
+//     die;
+// }
 
 if (!isset($_SESSION['isUser'])) {
     header("Location: login.php");
+    die;
 }
 
 if (isset($_POST['submitLogOut'])) {
     $logout = (new Login())->logOut();    
 }
 
-
+// top module, then manually specified stylesheets, then navbar module
+// edit in 'modules/top.php'
 topModule();  
   echo '<link rel="stylesheet" href="css/styles.css">';
   echo '<link rel="stylesheet" href="css/logged-in.css">';

@@ -12,6 +12,10 @@ class Register
     public $country;
     public $zipcode;
     public $accountType;
+
+    // for admin setup in install.php
+    public $adminUsername;
+    public $adminPassword;
     
     // for store owners
     public $businessName;
@@ -25,11 +29,16 @@ class Register
     public $readEmail;
     public $readPhone;
 
+    public $readAdmin;
+
     public function __construct()
     {
         // sanitize inputs for safety and consistency
+        $this->adminUsername = @trim(htmlentities(strtolower($_POST['adminUsername'])));
+        $this->adminPassword = @password_hash($_POST['adminPassword'], PASSWORD_DEFAULT);
+        
         $this->email = @trim(htmlentities(strtolower($_POST['email'])));
-        $this->phone = $_POST['phone'];
+        $this->phone = @$_POST['phone'];
         $this->password = @password_hash($_POST['password'], PASSWORD_DEFAULT);
         $this->firstName = @trim(ucwords($_POST['firstName']));
         $this->lastName = @trim(ucwords($_POST['lastName']));
@@ -40,25 +49,44 @@ class Register
         $this->accountType = @htmlentities($_POST['rad']);
         $this->businessName = @htmlentities($_POST['businessName']);
         $this->storeName = @htmlentities($_POST['storeName']);
-        $this->storeType = $_POST['store-type'];
+        $this->storeType = @$_POST['store-type'];
+    }
+
+    public function registerAdmin(){
+        if ($this->isAdminAvailable()){
+            $data = array($this->adminUsername, $this->adminPassword);
+            $registerInfo = implode('|',$data);
+
+            file_put_contents("../admins.txt", $registerInfo.PHP_EOL, FILE_APPEND);
+    
+            echo '<p style="text-align:center"><b>PHP installation completed!</b></p><br>';
+            echo '<p style="text-align:center"><b>Delete the install.php file to begin using or <a href="install.php">click here</a> to go back and add another admin user</b></p>';
+            die;
+        }
+        else {
+            header("Location: install.php?alreadyExists=true");
+            die;
+        }
     }
 
     public function register()
     {
-        if ($this -> isEmailAndPhoneAvailable()) {
+        if ($this->isAdminAvailable() && $this->isEmailAndPhoneAvailable()) {
             if ($this->accountType == 'Store Owner'){
                 // Primary indices: email - 0, phone - 1, password - 2, account type - 9
                 $data = array($this->email, $this->phone, $this->password, $this->firstName, $this->lastName,  $this->address, $this->city, $this->country, $this->zipcode, $this->accountType, $this->businessName, $this->storeName, $this->storeType);
-                $loginInfo = implode('|',$data);
-                file_put_contents("../storeOwners.txt", $loginInfo.PHP_EOL, FILE_APPEND);
-                echo '<b>Successfully registered!</b><br>';
+
+                $registerInfo = implode('|',$data);
+                file_put_contents("../storeOwners.txt", $registerInfo.PHP_EOL, FILE_APPEND);
+                echo '<p style="text-align:center"><b>Successfully registered!</b></p><br>';
+                echo '<p style="text-align:center"><b>Redirecting to login page in 3 seconds...</b></p><br>';
                 header("refresh:3; url=login.php");
                 die;
             }
             else {
                 $data = array($this->email, $this->phone,$this->password, $this->firstName, $this->lastName,  $this->address, $this->city, $this->country, $this->zipcode, $this->accountType);
-                $loginInfo = implode('|',$data);
-                file_put_contents("../users.txt", $loginInfo.PHP_EOL, FILE_APPEND);
+                $registerInfo = implode('|',$data);
+                file_put_contents("../users.txt", $registerInfo.PHP_EOL, FILE_APPEND);
                 echo '<p style="text-align:center"><b>Successfully registered!</b></p><br>';
                 echo '<p style="text-align:center"><b>Redirecting to login page in 3 seconds...</b></p><br>';
                 header("refresh:3; url=login.php");
@@ -69,6 +97,33 @@ class Register
             header("Location: register.php?alreadyExists=true");
             die;
         }      
+    }
+
+    public function isAdminAvailable(){
+        if (file_exists("../admins.txt")){
+            $d = file_get_contents("../admins.txt");
+            $data = explode("\n", $d);
+
+            foreach ($data as $row => $data) {
+
+                $row_user = explode('|', $data);
+                $this->readAdmin = @trim(strtolower($row_user[0]));
+
+                // check if user already exists
+                if (strcmp($this->readAdmin, $this->adminUsername) === 0) {
+                    $_SESSION['adminExists'] = 'That admin username is not available';
+                    return false;
+                }
+            }
+            $_SESSION['adminExists'] = '';
+            return true;
+        }
+        else{
+            $files = fopen("../admins.txt","x");
+            fwrite($files,'');
+            fclose($files);
+            return true;
+        }
     }
 
     public function isEmailAndPhoneAvailable(){

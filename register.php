@@ -6,9 +6,12 @@ require_once 'modules/footer.php';
 session_start();
 
 // redirect based on superglobal login status
+// redirect to CMS page here (unimplemented as of now), to user dashboard instead
 if (isset($_SESSION['isAdmin'])) {
-    header("Location: CMS.php");
-  }
+    // header("Location: CMS.php");
+    header("Location: logged-in.php");
+    die;
+}
   
   if (isset($_SESSION['isUser'])) {
     header("Location: logged-in.php");
@@ -118,7 +121,8 @@ navModule("Cinery | Register");
                 <div id=""> <?php
                 if (isset($_GET['alreadyExists']) && $_GET['alreadyExists'] && isset($_SESSION['emailExists']))
                 echo '<p style="color: red; font-size: 13px; text-align: center">'. $_SESSION["emailExists"]. '</p>';
-                 ?></div>
+                 ?>
+                 </div>
 
                 <input type="text" name="phone" class="input-field" id="" placeholder="Phone number" required>
                 <div id=""><?php echo $phoneError; ?></div>

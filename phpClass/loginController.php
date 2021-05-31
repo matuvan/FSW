@@ -5,7 +5,8 @@ class Login
     public $username;    
     public $password;
 
-
+    // variables in array later made available through $_SESSION to 
+    // display in user dashboard
     public $readEmail;
     public $readPhone;
     public $readName;
@@ -14,8 +15,6 @@ class Login
 
     // initialize array to place lines fed from text files later
     public $data;
-
-    public $sessionUser;
 
     public function __construct()
     {
@@ -77,8 +76,8 @@ class Login
     // separate user verification function to authenticate admins
     public function verifyAdmin()
     {
-        if (file_exists("../admin.txt")){
-            $d = file_get_contents("../admin.txt");
+        if (file_exists("../admins.txt")){
+            $d = file_get_contents("../admins.txt");
             $data = explode("\n", $d);
 
             foreach ($data as $row => $data) {
@@ -87,8 +86,7 @@ class Login
                 $this->readUsername = @trim(strtolower($row_user[0]));
                 $this->readPassword = @trim(strtolower($row_user[1]));
 
-
-                if (strcmp($this->readUsername, $this->email) === 0 && password_verify($this->password, $readPassword)) {
+                if (strcmp($this->readUsername, $this->username) === 0 && password_verify($this->password, $readPassword)) {
                     return true;
                 }
             }
@@ -101,10 +99,13 @@ class Login
     {
         // first, see if it's an admin
         if ($this->verifyAdmin() != null) {
-            $_SESSION['name'] = $this->username;
+            $_SESSION['adminName'] = $this->username;
             $_SESSION['isAdmin'] = true;
 
-            header("Location: CMS.php");
+            echo '<p style="font-size: 20px; text-align: center">Welcome, administrator ' . $this->username . '. </p>';
+            // redirect to CMS page here (unimplemented as of now), to user dashboard instead
+            // header("Location: CMS.php");
+            header("Location: logged-in.php");
             die();
         }
 
