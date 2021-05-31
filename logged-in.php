@@ -8,14 +8,16 @@ require_once 'modules/footer.php';
 
 session_start();
 
+if (isset($_SESSION['isAdmin'])) {
+    header("Location: CMS.php");
+}
+
 if (!isset($_SESSION['isUser'])) {
     header("Location: login.php");
 }
 
 if (isset($_POST['submitLogOut'])) {
-
-    $logout = (new Login())->logOut();
-    
+    $logout = (new Login())->logOut();    
 }
 
 

@@ -63,7 +63,7 @@ class Login
                 $this->readPhone = @trim($row_user[1]);
                 $this->readPassword = @trim($row_user[2]);
                 $this->readName = @trim($row_user[3]) . ' ' . @trim($row_user[4]);
-                $this->readAccountType = @trim($row_user[6]);
+                $this->readAccountType = @trim($row_user[9]);
 
                 // check for both username and password for a match in the "database"
                 if ((strcmp($this->readEmail, $this->username) === 0 || strcmp($this->readPhone, $this->username) === 0) && password_verify($this->password, $this->readPassword)) {

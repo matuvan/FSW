@@ -14,7 +14,7 @@ if (isset($_SESSION['isAdmin'])) {
     header("Location: logged-in.php");
   }
  
-$emailError = $phoneError = $passwordError = $retypeError = $nameError = $addressError = $cityError =  $zipcodeError = $accountTypeError  = $extraStoreError = '';
+$emailError = $phoneError = $passwordError = $retypeError = $nameError = $addressError = $cityError = $countryError = $zipcodeError = $accountTypeError  = $extraStoreError = '';
 
 $allowRegister = true;
 
@@ -71,13 +71,18 @@ if (isset($_POST['submitRegister'])) {
         $zipcodeError = '<p style="color: red; font-size: 13px; text-align: left">Zipcode must contain minimum of 4 and maximum of 6 digits!</p>';
         $allowRegister = false;
     }
-    
+
+    if($_POST['country'] == ''){
+        $countryError = '<p style="color: red; font-size: 13px; text-align: center">Please select a country</p>';
+        $allowRegister = false;
+    }
+        
     if(!isset($_POST['rad'])){
         $accountTypeError = '<p style="color: red; font-size: 13px; text-align: center">Please select an account type</p>';
         $allowRegister = false;
     }
 
-    elseif ($_POST['rad'] == 'storeOwner'){
+    elseif ($_POST['rad'] == 'Store Owner'){
         if (!preg_match($genericPattern2,$_POST['businessName']) || !preg_match($genericPattern2,$_POST['storeName'])){
             $extraStoreError = '<p style="color: red; font-size: 13px; text-align: left">Please fill out bussiness and store name with minimum of 3 characters.</p>';
             $allowRegister = false;
@@ -109,10 +114,18 @@ navModule("Cinery | Register");
 
             <form id="register-form" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" class="input-group">
                 <input type="email" name="email" class="input-field" id="" placeholder="Email address" required>
-                <div id="alertEmail"> <?php echo $emailError; ?></div>
+                <div id=""> <?php echo $emailError; ?></div>
+                <div id=""> <?php
+                if (isset($_GET['alreadyExists']) && $_GET['alreadyExists'] && isset($_SESSION['emailExists']))
+                echo '<p style="color: red; font-size: 13px; text-align: center">'. $_SESSION["emailExists"]. '</p>';
+                 ?></div>
 
                 <input type="text" name="phone" class="input-field" id="" placeholder="Phone number" required>
                 <div id=""><?php echo $phoneError; ?></div>
+                <div id=""> <?php
+                if (isset($_GET['alreadyExists']) && $_GET['alreadyExists'] && isset($_SESSION['phoneExists']))
+                echo '<p style="color: red; font-size: 13px; text-align: center">'. $_SESSION["phoneExists"]. '</p>'; 
+                 ?></div>
 
                 <input type="password" name="password" class="input-field"  id="" placeholder="Password" required>
                 <div id=""><?php echo $passwordError; ?></div>
@@ -130,6 +143,24 @@ navModule("Cinery | Register");
 
                 <input type="text" name="city" id="regCity" class="input-field" placeholder="City" required>
                 <div id=""><?php echo $cityError; ?></div>
+                <br></br>
+                <!-- reading through csv file of countries with respective code
+                then generate a corresponding dropdown selection -->
+                <select name="country" id="">
+                    <option value="">Select your country</option>
+                    <?php
+                    $file = fopen("others/countries.csv", "r");
+                    fgets($file);
+
+                    while (!feof($file)){
+                        $country_row = fgetcsv($file);
+
+                        echo "<option value='$country_row[1]'>$country_row[0]</option>";
+                    }
+                    fclose($file);
+                    ?>                
+                </select>
+                <div id=""><?php echo $countryError; ?></div>
 
                 <input type="number" name="zipcode" id="regZip" class="input-field" placeholder="Zip code" required>
                 <div id=""><?php echo $zipcodeError; ?></div>
