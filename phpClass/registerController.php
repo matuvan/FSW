@@ -61,11 +61,11 @@ class Register
     
             echo '<p style="text-align:center"><b>PHP installation completed!</b></p><br>';
             echo '<p style="text-align:center"><b>Delete the install.php file to begin using or <a href="install.php">click here</a> to go back and add another admin user</b></p>';
-            die;
+            die();
         }
         else {
             header("Location: install.php?alreadyExists=true");
-            die;
+            die();
         }
     }
 
@@ -81,7 +81,7 @@ class Register
                 echo '<p style="text-align:center"><b>Successfully registered!</b></p><br>';
                 echo '<p style="text-align:center"><b>Redirecting to login page in 3 seconds...</b></p><br>';
                 header("refresh:3; url=login.php");
-                die;
+                die();
             }
             else {
                 $data = array($this->email, $this->phone,$this->password, $this->firstName, $this->lastName,  $this->address, $this->city, $this->country, $this->zipcode, $this->accountType);
@@ -90,12 +90,12 @@ class Register
                 echo '<p style="text-align:center"><b>Successfully registered!</b></p><br>';
                 echo '<p style="text-align:center"><b>Redirecting to login page in 3 seconds...</b></p><br>';
                 header("refresh:3; url=login.php");
-                die;
+                die();
             }
         }
         else {
             header("Location: register.php?alreadyExists=true");
-            die;
+            die();
         }      
     }
 

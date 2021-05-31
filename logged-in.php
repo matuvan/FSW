@@ -8,12 +8,12 @@ session_start();
 // redirect to CMS page here (unimplemented as of now), do nothing
 // if (isset($_SESSION['isAdmin'])) {
 //     header("Location: CMS.php");
-//     die;
+//     die();
 // }
 
 if (!isset($_SESSION['isUser'])) {
     header("Location: login.php");
-    die;
+    die();
 }
 
 if (isset($_POST['submitLogOut'])) {

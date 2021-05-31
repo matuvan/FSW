@@ -10,16 +10,17 @@ session_start();
 if (isset($_SESSION['isAdmin'])) {
     // header("Location: CMS.php");
     header("Location: logged-in.php");
-    die;
+    die();
 }
 
 if (isset($_SESSION['isUser'])) {
   header("Location: logged-in.php");
+  die();
 }
 
 if (isset($_POST['submitLogin'])) {
   $register = (new Login())->logIn();
-  die;
+  die();
 }
 
 

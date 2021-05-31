@@ -139,7 +139,7 @@ class Login
         else {
             $_SESSION['invalidReason'] = 'Invalid username or password!';
             header("Location: login.php?invalidLogin=true");
-            die;
+            die();
         }
     }
 

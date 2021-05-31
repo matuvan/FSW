@@ -10,11 +10,12 @@ session_start();
 if (isset($_SESSION['isAdmin'])) {
     // header("Location: CMS.php");
     header("Location: logged-in.php");
-    die;
+    die();
 }
   
   if (isset($_SESSION['isUser'])) {
     header("Location: logged-in.php");
+    die();
   }
  
 $emailError = $phoneError = $passwordError = $retypeError = $nameError = $addressError = $cityError = $countryError = $zipcodeError = $accountTypeError  = $extraStoreError = '';
