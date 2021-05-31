@@ -1,26 +1,87 @@
-<!DOCTYPE html>
+
+
+<?php
+$fp = fopen("text.csv", "r");
+flock($fp, LOCK_SH);
+$headings = fgetcsv($fp);
+while ($aLineOfCells = fgetcsv($fp)) {
+  $records[] = $aLineOfCells;
+}
+flock($fp, LOCK_UN);
+fclose($fp);
+
+
+// $row = 1;
+// if (($handle = fopen("text.csv", "r")) !== FALSE) {
+//     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+//         $num = count($data);
+//         if 
+//         $row++;
+//         for ($c=0; $c < $num; $c++) {
+//             echo $data[$c] . "<br />\n";
+//         }
+//     }
+//     fclose($handle);
+// }
+
+
+
+
+$arr=array();
+$row = -1;
+if (($handle = fopen("text.csv", "r")) !== FALSE) {
+    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+        $num = count($data);
+        if ($featured_in_store = true){
+
+        }
+        $row++;
+        for ($c = 0; $c < $num; $c++) {
+            $arr[$row][$c]= $data[$c];
+        }
+    }
+    fclose($handle);
+}
+
+
+
+// $row = 1;
+// if (($handle = fopen("text.csv", "r")) !== FALSE) {
+//     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+//         $num = count($data);
+//         $row++;
+//         for ($c=0; $c < $num; $c++) {
+//             if ($data[$c] == "TRUE") {
+//               echo "<a href='products.php'><h2>{$data[$c]}</h2></a>";
+//             }
+//             echo $data[$c] . "<br />\n";
+//         }
+//     }
+//     fclose($handle);
+// }<!DOCTYPE html>
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="storestyle.css">
-    <title>Store</title>     
+    <title>Category</title>
 </head>
 <body>
     <header>
         <div class="navbar">
-            <a href="store.html">HOME</a>
+            <a href="products.php">HOME</a>
             <div class="navbar-1">
                 <div class="subnav">
                 <button class="subnavbtn">PRODUCTS<i class="dropdown"></i></button>
                 <div class="subnav-content">
-                    <a href="category.html">Browse Products by Category</a>
-                    <a href="createdtime.html">Browse Products by Created Time</a>
+                    <a href="category.php">Browse Products by Category</a>
+                    <a href="createdtime.php">Browse Products by Created Time</a>
                 </div>
             </div> 
-            <a href="ABOUTUS.html">ABOUT US</a>
-            <a href="CONTACT.html">CONTACT</a>
+            <a href="ABOUTUS.php">ABOUT US</a>
+            <a href="CONTACT.php">CONTACT</a>
             </div>
     </header>
     <main>
@@ -29,58 +90,124 @@
         </div>
         <div class="row">
             <div class="column">
-                <a href="products.html"><img src="tshirt.jpg" alt="Details"></a>
-                <a href="products.html"><h2>T-Shirt</h2></a>
-                <p class="price">$1.23</p>
-            </div>
-            <div class="column">
-                <a href="products.html"><img src="shoes.jpg" alt="Details"></a>
-                <a href="products.html"><h2>Shoes</h2></a>
+                <a href="products.php"><img src="shoes.jpg" alt="Details"></a>
+                <a href="products.php"><h2>Shoes</h2></a>
+                <p> New Tech </p>
+                <p> Release Date: 12/12/2012</p>
                 <p class="price">$1.45</p>
             </div>
             <div class="column">
-                <a href="products.html"><img src="shirt.jpg" alt="Details"></a>
-                <a href="products.html"><h2>Shirt</h2></a>
-                <p class="price">$1.56</p>
+                <a href="products.php"><img src="shoes1.jpg" alt="Details"></a>
+                <a href="products.php"><h2>T-Shirt</h2></a>
+                <p> Carbon Fiber</p>
+                <p> Release Date: 12/12/2012</p>
+                <p class="price">$1.23</p>
             </div>
             <div class="column">
-                <a href="products.html"><img src="shoes1.jpg" alt="Details"></a>
-                <a href="products.html"><h2>Shoes</h2></a>
+                <a href="products1.php"><img src="shoes2.jpg" alt="Details"></a>
+                <a href="products1.php"><h2>Shoes</h2></a>
+                <p> Flying </p>
+                <p> Release Date: 12/12/2012</p>
                 <p class="price">$1.67</p>
             </div>
+            <div class="column">
+                <a href="products.php"><img src="shoes3.jpg" alt="Details"></a>
+                <a href="products.php"><h2>Shirt</h2></a>
+                <p> Waterproofs</p>
+                <p> Release Date: 12/12/2012</p>
+                <p class="price">$1.56</p>
+            </div> 
         </div>
+        <?php
+        echo"        <div class='row'>";
+        echo"            <div class='column'>";
+        echo"                <a href='products.php'><img src={$records[0][0]} alt='Details'></a>";
+        echo"                <a href='products.php'><h2>{$records[0][1]}</h2></a>";
+        echo"                <p class='price'>{$records[0][2]}</p>";
+        echo"            </div>";
+        echo"            <div class='column'>";
+        echo"                <a href='products.php'><img src={$records[1][0]} alt='Details'></a>";
+        echo"                <a href='products.php'><h2>{$records[1][1]}</h2></a>";
+        echo"                <p class='price'>{$records[1][2]}</p>";
+        echo"            </div>";
+        echo"            <div class='column'>";
+        echo"                <a href='products.php'><img src={$records[2][0]} alt='Details'></a>";
+        echo"                <a href='products.php'><h2>{$records[2][1]}</h2></a>";
+        echo"                <p class='price'>{$records[2][2]}</p>";
+        echo"            </div>";
+        echo"            <div class='column'>";
+        echo"                <a href='products.php'><img src={$records[3][0]} alt='Details'></a>";
+        echo"                <a href='products.php'><h2>{$records[3][1]}</h2></a>";
+        echo"                <p class='price'>{$records[3][2]}</p>";
+        echo"            </div>";  
+        echo"        </div>";
+        ?>
         <div class="main-b">
             <h1>Featured Products</h1>
         </div>
-        <div class="row">
+        <div class="row"> 
             <div class="column">
-                <a href="products1.html"><img src="shoes3.jpg" alt="Details"></a>
-                <a href="products1.html"><h2>Shoes</h2></a>
-                <p class="price">$1.23</p>
-            </div>
-            <div class="column">
-                <a href="products1.html"><img src="shoes2.jpg" alt="Details"></a>
-                <a href="products1.html"><h2>Shoes</h2></a>
-                <p class="price">$1.45</p>
-            </div>
-            <div class="column">
-                <a href="products1.html"><img src="shoes4.jpg" alt="Details"></a>
-                <a href="products1.html"><h2>Shoes</h2></a>
+                <a href="products1.php"><img src="shoes4.jpg" alt="Details" sizes="width:30%" ></a>
+                <a href="products1.php"><h2>Shirt</h2></a>
+                <p> Carbon Fiber</p>
+                <p> Release Date: 12/12/2012</p>
                 <p class="price">$1.56</p>
             </div>
             <div class="column">
-                <a href="products1.html"><img src="shoes5.jpg" alt="Details"></a>
-                <a href="products1.html"><h2>Shoes</h2></a>
+                <a href="products1.php"><img src="shoes5.jpg" alt="Details"></a>
+                <a href="products1.php"><h2>Shoes</h2></a>
+                <p> Waterproofs</p>
+                <p> Release Date: 12/12/2012</p>
                 <p class="price">$1.67</p>
             </div>
+            <div class="column">
+                <a href="products1.php"><img src="shirt.jpg" alt="Details" sizes="width:30%" ></a>
+                <a href="products1.php"><h2>Shoes</h2></a>
+                <p> Flying </p>
+                <p> Release Date: 12/12/2012</p>
+                <p class="price">$1.45</p>
+            </div>
+            <div class="column">
+                <a href="products1.php"><img src="tshirt.jpg" alt="Details" sizes="width:30%" ></a>
+                <a href="products1.php"><h2>T-Shirt</h2></a>
+                <p> New Tech </p>
+                <p> Release Date: 12/12/2012</p>
+                <p class="price">$1.23</p>
+            </div>
         </div>
+        <?php
+        echo"        <div class='row'>";
+        echo"            <div class='column'>";
+        echo"                <a href='products1.php'><img src={$records[4][0]} alt='Details'></a>";
+        echo"                <a href='products1.php'><h2>{$records[4][1]}</h2></a>";
+        echo"                <p class='price'>{$records[4][2]}</p>";
+        echo"            </div>";
+        echo"            <div class='column'>";
+        echo"                <a href='products1.php'><img src={$records[5][0]} alt='Details'></a>";
+        echo"                <a href='products1.php'><h2>{$records[5][1]}</h2></a>";
+        echo"                <p class='price'>{$records[5][2]}</p>";
+        echo"            </div>";
+        echo"            <div class='column'>";
+        echo"                <a href='products1.php'><img src={$records[6][0]} alt='Details'></a>";
+        echo"                <a href='products1.php'><h2>{$records[6][1]}</h2></a>";
+        echo"                <p class='price'>{$records[6][2]}</p>";
+        echo"            </div>";
+        echo"            <div class='column'>";
+        echo"                <a href='products1.php'><img src={$records[7][0]} alt='Details'></a>";
+        echo"                <a href='products1.php'><h2>{$records[7][1]}</h2></a>";
+        echo"                <p class='price'>{$records[7][2]}</p>";
+        echo"            </div>";
+        echo"        </div>";  
+        ?>
     </main>
     <footer>
         <div class="navbar-2">
-            <a href="Copyright.html">Copyright</a>
-            <a href="ToS.html">Term Of Service</a>
-            <a href="PrivacyPolicy.html">Privacy Policy</a>
+            <a href="Copyright.php">Copyright</a>
+            <a href="ToS.php">Term Of Service</a>
+            <a href="PrivacyPolicy.php">Privacy Policy</a>
         </div>
     </footer>
 </body>
 </html>
+
+
