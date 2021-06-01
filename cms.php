@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+$_SESSION['isAdmin'] = true;
+if (!isset($_SESSION['isAdmin'])) {
+    echo "You do not have permission to view this page.";
+    header("refresh:3; url=login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
