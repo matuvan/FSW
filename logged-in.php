@@ -11,7 +11,7 @@ session_start();
 //     die();
 // }
 
-if (!isset($_SESSION['isUser'])) {
+if (!(isset($_SESSION['isUser']) || isset($_SESSION['isAdmin']))) {
     header("Location: login.php");
     die();
 }

@@ -37,7 +37,7 @@ class Login
                 $this->readPhone = @trim($row_user[1]);
                 $this->readPassword = @trim($row_user[2]);
                 $this->readName = @trim($row_user[3]) . ' ' . @trim($row_user[4]);
-                $this->readAccountType = @trim($row_user[6]);
+                $this->readAccountType = @trim($row_user[9]);
 
                 // check for both username and password for a match in the "database"
                 if ((strcmp($this->readEmail, $this->username) === 0 || strcmp($this->readPhone, $this->username) === 0) && password_verify($this->password, $this->readPassword)) {
@@ -84,9 +84,9 @@ class Login
                 $row_user = explode('|', $data);
 
                 $this->readUsername = @trim(strtolower($row_user[0]));
-                $this->readPassword = @trim(strtolower($row_user[1]));
+                $this->readPassword = @trim($row_user[1]);
 
-                if (strcmp($this->readUsername, $this->username) === 0 && password_verify($this->password, $readPassword)) {
+                if (strcmp($this->readUsername, $this->username) === 0 && password_verify($this->password, $this->readPassword)) {
                     return true;
                 }
             }
@@ -98,19 +98,22 @@ class Login
     public function logIn()
     {
         // first, see if it's an admin
-        if ($this->verifyAdmin() != null) {
+        if ($this->verifyAdmin()) {
             $_SESSION['adminName'] = $this->username;
+            $_SESSION['email'] = '';
+            $_SESSION['name'] = '';
+            $_SESSION['accountType'] = 'Administrator';
             $_SESSION['isAdmin'] = true;
 
             echo '<p style="font-size: 20px; text-align: center">Welcome, administrator ' . $this->username . '. </p>';
             // redirect to CMS page here (unimplemented as of now), to user dashboard instead
-            // header("Location: CMS.php");
-            header("Location: logged-in.php");
+            // header("refresh:3; url=CMS.php");
+            header("refresh:3; url=logged-in.php");
             die();
         }
 
         // check if it's a store owner
-        elseif ($this->verifyStoreOwner()!= null) {
+        elseif ($this->verifyStoreOwner() != null) {
             $data = $this->verifyStoreOwner();
             $_SESSION['email'] = $data[0];
             $_SESSION['phone'] = $data[1];
@@ -123,7 +126,7 @@ class Login
         } 
 
         // otherwise, must be an user
-        elseif ($this->verifyUser()!= null) {
+        elseif ($this->verifyUser() != null) {
             $data = $this->verifyUser();
             $_SESSION['email'] = $data[0];
             $_SESSION['phone'] = $data[1];

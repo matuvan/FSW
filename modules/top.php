@@ -1,6 +1,7 @@
 <?php
+
 function topModule(){
-    $html = <<<"OUTPUT"
+    $html = <<<OUTPUT
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +12,19 @@ OUTPUT;
   echo $html;
 }
 function navModule($pageTitle){
-    $html = <<<"OUTPUT"
+    if (isset($_SESSION['isUser']) && $_SESSION['isUser'] == true){
+        $dropdown = '<a href="logged-in.php">User Dashboard</a>';
+    }
+    elseif (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true){
+        // redirect to CMS page here (unimplemented as of now), to user dashboard instead
+        $dropdown = '<a href="logged-in.php">Admin Dashboard</a>';
+    }
+    else {
+        $dropdown = '<a href="login.php">Login</a>
+        <br><br><br>
+        <a href="register.php">Register</a>';
+    }
+    $html = <<<OUTPUT
     <title>$pageTitle</title>
 </head>
 <body>
@@ -27,17 +40,15 @@ function navModule($pageTitle){
                         <li class="dropdown">
                             <a href="#">My Account</a>
                             <span class="dropdown-content">
-                                <a href="login.php">Login</a>
-                                <br><br><br>
-                                <a href="register.php">Register</a>
+                                $dropdown
                             </span>
                         </li>
                         <li class="dropdown">
                             <a href="#">Browse</a>
                             <span class="dropdown-content">
-                                <a href="browse-az.php">Browse by alphabet</a>
-                                <br><br><br>
-                                <a href="browse-type.php">Browse by type</a>
+                            <a href="browse-az.php">Browse by alphabet</a>
+                            <br><br><br>
+                            <a href="browse-type.php">Browse by type</a>
                             </span>
                         </li>
                         <li><a href="faqs.php">FAQs</a></li>

@@ -2,6 +2,8 @@
 require_once 'modules/top.php';
 require_once 'modules/footer.php';
 
+session_start();
+
 // top module, then manually specified stylesheets, then navbar module
 // edit in 'modules/top.php'
 topModule();  
