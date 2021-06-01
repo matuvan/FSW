@@ -5,6 +5,13 @@ require_once 'modules/footer.php';
 
 session_start();
 
+if (file_exists('install.php')){
+    echo '<p style="font-size: 20px; text-align: center">PHP installation script detected. First-time setup required!</p>';
+    echo '<p style="font-size: 20px; text-align: center">Redirecting to installation script in 5 seconds...</p>';
+    header('refresh:5, url=install.php');
+    die();
+}
+
 if (!(isset($_SESSION['isUser']) || isset($_SESSION['isAdmin']))) {
     header("Location: login.php");
     die();

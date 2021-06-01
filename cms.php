@@ -1,6 +1,13 @@
 <?php
 require_once 'phpClass/loginController.php';
 
+if (file_exists('install.php')){
+    echo '<p style="font-size: 20px; text-align: center">PHP installation script detected. First-time setup required!</p>';
+    echo '<p style="font-size: 20px; text-align: center">Redirecting to installation script in 5 seconds...</p>';
+    header('refresh:5, url=install.php');
+    die();
+}
+
 session_start();
 if (!(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'])) {
     echo "You do not have permission to view this page.";

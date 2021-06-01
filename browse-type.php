@@ -10,7 +10,7 @@ topModule();
   echo '<link rel="stylesheet" href="css/browse-type.css">';
   echo '<link rel="stylesheet" href="css/storestyle.css">';
   echo '<link rel="stylesheet" href="css/styles.css">';
-  echo '<script src="js/browse-type.js"></script>';
+
 navModule("Cinery | Browse Stores");
 ?>
 
@@ -91,5 +91,6 @@ navModule("Cinery | Browse Stores");
 // footer, edit in 'modules/footer.php'
 endModule();
 ?>
+<script src="js/browse-type.js"></script>
 
 </html> 

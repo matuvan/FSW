@@ -22,7 +22,11 @@
   <body>
 
 <?php
+<<<<<<< Updated upstream
   $file_name = "csv/categories.csv";
+=======
+  $file_name = "../csv/categories.csv";
+>>>>>>> Stashed changes
   $catename = "Department stores";
   $all = read_categories($file_name, $catename);
 

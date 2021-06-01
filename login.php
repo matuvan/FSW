@@ -58,7 +58,6 @@ navModule("Cinery | Login");
             ?>
            </div>
           <div class="create-account">
-            <a href="forgotpwd.php">Forgot Password?</a>
             <p>Don't have an account? <a href="register.php">Register here</a></p>
           </div>
 
