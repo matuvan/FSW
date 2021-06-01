@@ -35,7 +35,7 @@ $product = 0;
                 $id = $s['id'];
                 $sname = $s['name'];
                 echo " <div class=\"column\">
-                <a href=\"$sname\"><img src=\"blanklogo.jpg\"></a>
+                <a href=\"$sname\"><img src=\"media/blanklogo.jpg\"></a>
                 </div>
                 ";
                 $count++;
@@ -69,7 +69,7 @@ $product = 0;
                 $id = $s['id'];
                 $sname = $s['name'];
                 echo " <div class=\"column\">
-                <a href=\"$sname\"><img src=\"blanklogo.jpg\"></a>
+                <a href=\"$sname\"><img src=\"media/blanklogo.jpg\"></a>
                 </div>
                 ";
                 $store++;
