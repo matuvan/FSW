@@ -22,7 +22,7 @@
   <body>
 
 <?php
-  $file_name = "phpClass/categories.csv";
+  $file_name = "csv/categories.csv";
   $catename = "Department stores";
   $all = read_categories($file_name, $catename);
 
