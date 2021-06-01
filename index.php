@@ -96,8 +96,6 @@ $product = 0;
     </div>
 
 <?php
-
-<?php
 // footer, edit in 'modules/footer.php'
 endModule();
 ?>
