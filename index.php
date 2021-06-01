@@ -12,8 +12,10 @@ navModule("Cinery | Online Shopping Mall");
 ?>
 <?php
 include 'phpClass/product_functions.php';
+include 'phpClass/store_functions.php';
 
 $products = read_all_products();
+$stores = read_all_stores();
 
 $count = 0;
 $increase = 0;
@@ -28,13 +30,12 @@ $product = 0;
     <!-- featured stores -->
     <h2>New Stores</h2>
     <div class="container">
-        <?php
-            foreach ($products as $p) {
-                $id = $p['id'];
-                $name = $p['name'];
+     <?php
+            foreach ($stores as $s) {
+                $id = $s['id'];
+                $sname = $s['name'];
                 echo " <div class=\"column\">
-                <a href=\"$name\"><img src=\"media/blanklogo.jpg\"></a>
-                <p style=\"text-align:center\">$name</p>
+                <a href=\"$sname\"><img src=\"blanklogo.jpg\"></a>
                 </div>
                 ";
                 $count++;
@@ -63,13 +64,14 @@ $product = 0;
     </div>
     <h2>Featured Stores</h2>
     <div class="container">
-        <?php
-            foreach ($products as $p) {
-                $id = $p['id'];
-                $name = $p['name'];
+     <?php
+            foreach ($stores as $s) {
+                $id = $s['id'];
+                $sname = $s['name'];
                 echo " <div class=\"column\">
-                <a href=\"$name\"><img src=\"media/blanklogo.jpg\"></a>
-                </div>";
+                <a href=\"$sname\"><img src=\"blanklogo.jpg\"></a>
+                </div>
+                ";
                 $store++;
                 if ($store == 10) {
                     break;
