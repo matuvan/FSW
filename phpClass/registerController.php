@@ -72,7 +72,7 @@ class Register
     public function register()
     {
         if ($this->isAdminAvailable() && $this->isEmailAndPhoneAvailable()) {
-            if ($this->accountType == 'Store Owner'){
+            if ($this->accountType === 'Store Owner'){
                 // Primary indices: email - 0, phone - 1, password - 2, account type - 9
                 $data = array($this->email, $this->phone, $this->password, $this->firstName, $this->lastName,  $this->address, $this->city, $this->country, $this->zipcode, $this->accountType, $this->businessName, $this->storeName, $this->storeType);
 
@@ -110,8 +110,14 @@ class Register
                 $this->readAdmin = @trim(strtolower($row_user[0]));
 
                 // check if user already exists
-                if (strcmp($this->readAdmin, $this->adminUsername) === 0) {
-                    $_SESSION['adminExists'] = 'That admin username is not available';
+                if (!isset($_POST['email'])) {
+                    if (strcmp($this->readAdmin, $this->adminUsername) === 0) {
+                        $_SESSION['adminExists'] = $this->adminUsername . ' is not available';
+                        return false;
+                    }
+                }
+                else if (strcmp($this->readAdmin, $this->email) === 0){
+                    $_SESSION['adminExists'] = $this->email . ' is not available';
                     return false;
                 }
             }
@@ -127,7 +133,7 @@ class Register
     }
 
     public function isEmailAndPhoneAvailable(){
-        if ($this->accountType == 'Store Owner'){
+        if ($this->accountType === 'Store Owner'){
             if (file_exists("../storeOwners.txt")){
                 $d = file_get_contents("../storeOwners.txt");
                 $data = explode("\n", $d);
@@ -140,23 +146,24 @@ class Register
     
                     // check if user already exists
                     if (strcmp($this->readEmail, $this->email) === 0 && strcmp($this->readPhone, $this->phone) === 0) {
-                        $_SESSION['emailExists'] = 'That email is not available';
-                        $_SESSION['phoneExists'] = 'That phone number is not available';
+                        $_SESSION['emailExists'] = $this->email . ' is not available';
+                        $_SESSION['phoneExists'] = $this->phone . ' is not available';
                         return false;
                     }
 
                     elseif (strcmp($this->readEmail, $this->email) === 0) {
-                        $_SESSION['emailExists'] = 'That email is not available';
+                        $_SESSION['emailExists'] = $this->email . ' is not available';
                         return false;
                     }
 
                     elseif (strcmp($this->readPhone, $this->phone) === 0) {
-                        $_SESSION['phoneExists'] = 'That phone number is not available';
+                        $_SESSION['phoneExists'] = $this->phone . ' is not available';
                         return false;
                     }
                 }
                 $_SESSION['emailExists'] = '';
                 $_SESSION['phoneExists'] = '';
+                $_SESSION['adminExists'] = '';
                 return true;
             }
             else {
@@ -178,23 +185,24 @@ class Register
 
                 // check if user already exists
                 if (strcmp($this->readEmail, $this->email) === 0 && strcmp($this->readPhone, $this->phone) === 0) {
-                    $_SESSION['emailExists'] = 'That email is not available';
-                    $_SESSION['phoneExists'] = 'That phone number is not available';
+                    $_SESSION['emailExists'] = $this->email . ' is not available';
+                    $_SESSION['phoneExists'] = $this->phone . ' is not available';
                     return false;
                 }
 
                 elseif (strcmp($this->readEmail, $this->email) === 0) {
-                    $_SESSION['emailExists'] = 'That email is not available';
+                    $_SESSION['emailExists'] = $this->email . ' is not available';
                     return false;
                 }
 
                 elseif (strcmp($this->readPhone, $this->phone) === 0) {
-                    $_SESSION['phoneExists'] = 'That phone number is not available';
+                    $_SESSION['phoneExists'] = $this->phone . ' is not available';
                     return false;
                 }
             }
             $_SESSION['emailExists'] = '';
             $_SESSION['phoneExists'] = '';
+            $_SESSION['adminExists'] = '';
             return true;
         }
         else{

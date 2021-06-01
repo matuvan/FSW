@@ -120,6 +120,8 @@ navModule("Cinery | Register");
                 <input type="email" name="email" class="input-field" id="" placeholder="Email address" required>
                 <div id=""> <?php echo $emailError; ?></div>
                 <div id=""> <?php
+                if (isset($_GET['alreadyExists']) && $_GET['alreadyExists'] && isset($_SESSION['adminExists']))
+                echo '<p style="color: red; font-size: 13px; text-align: center">'. $_SESSION["adminExists"] . '</p>';
                 if (isset($_GET['alreadyExists']) && $_GET['alreadyExists'] && isset($_SESSION['emailExists']))
                 echo '<p style="color: red; font-size: 13px; text-align: center">'. $_SESSION["emailExists"]. '</p>';
                  ?>
