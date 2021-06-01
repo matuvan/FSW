@@ -12,7 +12,7 @@ navModule("Cinery | Online Shopping Mall");
 ?>
 <?php
 session_start();
-include 'functions.php';
+include 'phpClass/functions.php';
 
 $products = read_all_products();
 
