@@ -1,4 +1,5 @@
 <?php
+require_once 'phpClass/loginController.php';
 
 session_start();
 if (!(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'])) {
@@ -6,12 +7,18 @@ if (!(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'])) {
     header("refresh:3; url=login.php");
     die();
 }
+
+if (isset($_POST['submitLogOut'])) {
+    $logout = (new Login())->logOut();    
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Admin Dashboard</title>
 <link rel="stylesheet" href="css/cms.css">
+<link rel="stylesheet" href="css/logged-in.css">
 </head>
 
 <body>
@@ -30,7 +37,11 @@ if (!(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'])) {
 
 <div class="data">
   <p>Welcome to the Admin Dashboard !</p>
+  <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+    <button id="logout-btn" name="submitLogOut" type="submit" class="btn">Log out</button>
+    </form>
 </div>
+
 
 </body>
 

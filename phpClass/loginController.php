@@ -49,6 +49,7 @@ class Login
         return null;
     }
 
+    // separate user verification function to authenticate store owners
     public function verifyStoreOwner()
     {
         if (file_exists("../storeOwners.txt")) {
@@ -85,7 +86,7 @@ class Login
 
                 $this->readUsername = @trim(strtolower($row_user[0]));
                 $this->readPassword = @trim($row_user[1]);
-
+                // check for both username and password for a match in the "database"
                 if (strcmp($this->readUsername, $this->username) === 0 && password_verify($this->password, $this->readPassword)) {
                     return true;
                 }
@@ -105,7 +106,7 @@ class Login
             $_SESSION['accountType'] = 'Administrator';
             $_SESSION['isAdmin'] = true;
 
-            echo '<p style="font-size: 20px; text-align: center">Welcome, administrator ' . $this->username . '. </p>';
+            echo '<p style="font-size: 20px; text-align: center"><b>Welcome, administrator ' . $this->username . '.</b></p>';
             header("refresh:3; url=cms.php");
             die();
         }
