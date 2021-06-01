@@ -10,14 +10,16 @@ topModule();
   echo '<link rel="stylesheet" href="css/browse-type.css">';
   echo '<link rel="stylesheet" href="css/storestyle.css">';
   echo '<link rel="stylesheet" href="css/styles.css">';
+  echo '<script src="browse-type.js"></script>';
 navModule("Cinery | Browse Stores");
 ?>
 
     <div class="main-div">
         <h1>Filter by store category</h1>
+        <form id="storeform" method="get" action="phpClass/display.php" onsubmit="return checkSubmit()">
         <div class="drop-down">
-            <select>
-                <option value="Department">Select category:</option>
+            <select id="category" name="category">
+                <option value=" ">Select category</option>
                 <option value="Department">Department</option>
                 <option value="Grocery">Grocery</option>
                 <option value="Restaurant">Restaurant</option>
@@ -31,8 +33,9 @@ navModule("Cinery | Browse Stores");
                 <option value="Thrift">Thrift</option>
                 <option value="Services">Services</option>
                 <option value="Kiosk">Kiosk</option>
-            </select>
+            </select><input type="submit" value="Browse" name="act">
         </div>
+      </form>
     </div>
     <div class="row">
         <div class="column">
