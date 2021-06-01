@@ -6,14 +6,12 @@ require_once 'modules/footer.php';
 session_start();
 
 // redirect based on superglobal login status
-// redirect to CMS page here (unimplemented as of now), to user dashboard instead
 if (isset($_SESSION['isAdmin'])) {
-    // header("Location: CMS.php");
-    header("Location: logged-in.php");
+    header("Location: cms.php");
     die();
 }
   
-  if (isset($_SESSION['isUser'])) {
+if (isset($_SESSION['isUser'])) {
     header("Location: logged-in.php");
     die();
   }

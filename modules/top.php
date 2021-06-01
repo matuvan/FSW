@@ -17,7 +17,7 @@ function navModule($pageTitle){
     }
     elseif (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true){
         // redirect to CMS page here (unimplemented as of now), to user dashboard instead
-        $dropdown = '<a href="logged-in.php">Admin Dashboard</a>';
+        $dropdown = '<a href="cms.php">Admin Dashboard</a>';
     }
     else {
         $dropdown = '<a href="login.php">Login</a>

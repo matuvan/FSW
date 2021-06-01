@@ -1,10 +1,10 @@
 <?php
 
 session_start();
-$_SESSION['isAdmin'] = true;
-if (!isset($_SESSION['isAdmin'])) {
+if (!(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'])) {
     echo "You do not have permission to view this page.";
     header("refresh:3; url=login.php");
+    die();
 }
 ?>
 <!DOCTYPE html>

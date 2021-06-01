@@ -106,9 +106,7 @@ class Login
             $_SESSION['isAdmin'] = true;
 
             echo '<p style="font-size: 20px; text-align: center">Welcome, administrator ' . $this->username . '. </p>';
-            // redirect to CMS page here (unimplemented as of now), to user dashboard instead
-            // header("refresh:3; url=CMS.php");
-            header("refresh:3; url=logged-in.php");
+            header("refresh:3; url=cms.php");
             die();
         }
 

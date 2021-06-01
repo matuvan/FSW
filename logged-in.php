@@ -5,14 +5,13 @@ require_once 'modules/footer.php';
 
 session_start();
 
-// redirect to CMS page here (unimplemented as of now), do nothing
-// if (isset($_SESSION['isAdmin'])) {
-//     header("Location: CMS.php");
-//     die();
-// }
-
 if (!(isset($_SESSION['isUser']) || isset($_SESSION['isAdmin']))) {
     header("Location: login.php");
+    die();
+}
+
+if (isset($_SESSION['isAdmin'])) {
+    header("Location: cms.php");
     die();
 }
 
