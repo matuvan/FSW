@@ -24,7 +24,7 @@ navModule("Cinery | About Us");
 
     <button id="myBtn">
         <div class="card">
-            <img src="nguyen.jpg">
+            <img src="media/nguyen.jpg">
             <h1>Le Thanh Nguyen</h1>
             <p class="title">s3638100</p>
             <h4>RMIT University</h4>
@@ -38,7 +38,7 @@ navModule("Cinery | About Us");
     
     <button id="myBtn">
         <div class="card">
-            <img src="van.jpg">
+            <img src="media/van.jpg">
             <h1>Ma Tu Van</h1>
             <p class="title">s3877618</p>
             <h4>RMIT University</h4>
@@ -53,7 +53,7 @@ navModule("Cinery | About Us");
 
     <button id="myBtn">
         <div class="card">
-            <img src="duc.jpg">
+            <img src="media/duc.jpg">
             <h1>Nguyen Huu Duc</h1>
             <p class="title">s3669698</p>
             <h4>RMIT University</h4>
@@ -70,6 +70,6 @@ navModule("Cinery | About Us");
 // footer, edit in 'modules/footer.php'
 endModule();
 ?>
-<script src="modal.js"></script>
+<script src="js/modal.js"></script>
 
 </html>

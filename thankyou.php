@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="storestyle.css">
+    <link rel="stylesheet" href="css/storestyle.css">
     <title>Thankyou</title>
 </head>
 <body>
@@ -32,22 +32,22 @@
         </div>
         <div class="row">
             <div class="column">
-                <a href="products.php"><img src="tshirt.jpg" alt="Details"></a>
+                <a href="products.php"><img src="media/tshirt.jpg" alt="Details"></a>
                 <a href="products.php"><h2>T-Shirt</h2></a>
                 <p class="price">$1.23</p>
             </div>
             <div class="column">
-                <a href="products.php"><img src="shoes.jpg" alt="Details"></a>
+                <a href="products.php"><img src="media/shoes.jpg" alt="Details"></a>
                 <a href="products.php"><h2>Shoes</h2></a>
                 <p class="price">$1.45</p>
             </div>
             <div class="column">
-                <a href="products.php"><img src="shirt.jpg" alt="Details"></a>
+                <a href="products.php"><img src="media/shirt.jpg" alt="Details"></a>
                 <a href="products.php"><h2>Shirt</h2></a>
                 <p class="price">$1.56</p>
             </div>
             <div class="column">
-                <a href="products.php"><img src="shoes1.jpg" alt="Details"></a>
+                <a href="products.php"><img src="media/shoes1.jpg" alt="Details"></a>
                 <a href="products.php"><h2>Shoes</h2></a>
                 <p class="price">$1.67</p>
             </div>

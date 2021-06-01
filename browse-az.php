@@ -29,22 +29,22 @@ navModule("Cinery | Browse Stores");
               </div>
             <div class="row">
                 <div class="column">
-                    <a href="products.html"><img src="tshirt.jpg" alt="Details"></a>
+                    <a href="products.html"><img src="media/tshirt.jpg" alt="Details"></a>
                     <a href="products.html"><h2>T-Shirt</h2></a>
                     <p class="price">$1.23</p>
                 </div>
                 <div class="column">
-                    <a href="products.html"><img src="shoes.jpg" alt="Details"></a>
+                    <a href="products.html"><img src="media/shoes.jpg" alt="Details"></a>
                     <a href="products.html"><h2>Shoes</h2></a>
                     <p class="price">$1.45</p>
                 </div>
                 <div class="column">
-                    <a href="products.html"><img src="shirt.jpg" alt="Details"></a>
+                    <a href="products.html"><img src="media/shirt.jpg" alt="Details"></a>
                     <a href="products.html"><h2>Shirt</h2></a>
                     <p class="price">$1.56</p>
                 </div>
                 <div class="column">
-                    <a href="products.html"><img src="shoes1.jpg" alt="Details"></a>
+                    <a href="products.html"><img src="media/shoes1.jpg" alt="Details"></a>
                     <a href="products.html"><h2>Shoes</h2></a>
                     <p class="price">$1.67</p>
                 </div>
@@ -54,22 +54,22 @@ navModule("Cinery | Browse Stores");
             </div>
             <div class="row">
                 <div class="column">
-                    <a href="products.html"><img src="shoes3.jpg" alt="Details"></a>
+                    <a href="products.html"><img src="media/shoes3.jpg" alt="Details"></a>
                     <a href="products.html"><h2>Shoes</h2></a>
                     <p class="price">$1.23</p>
                 </div>
                 <div class="column">
-                    <a href="products.html"><img src="shoes2.jpg" alt="Details"></a>
+                    <a href="products.html"><img src="media/shoes2.jpg" alt="Details"></a>
                     <a href="products.html"><h2>Shoes</h2></a>
                     <p class="price">$1.45</p>
                 </div>
                 <div class="column">
-                    <a href="products.html"><img src="shoes4.jpg" alt="Details"></a>
+                    <a href="products.html"><img src="media/shoes4.jpg" alt="Details"></a>
                     <a href="products.html"><h2>Shoes</h2></a>
                     <p class="price">$1.56</p>
                 </div>
                 <div class="column">
-                    <a href="products.html"><img src="shoes5.jpg" alt="Details"></a>
+                    <a href="products.html"><img src="media/shoes5.jpg" alt="Details"></a>
                     <a href="products.html"><h2>Shoes</h2></a>
                     <p class="price">$1.67</p>
                 </div>

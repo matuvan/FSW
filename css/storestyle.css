@@ -233,3 +233,12 @@ table {
     font-size: 25px;
 }
 
+.slideshow {
+    margin-left: 44%;
+}
+.mslides {
+    display:none;
+}
+.control {
+    margin-left: 50px;
+}			

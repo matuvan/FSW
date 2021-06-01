@@ -71,6 +71,7 @@ class Register
 
     public function register()
     {
+        // see if phone number/email is available
         if ($this->isAdminAvailable() && $this->isEmailAndPhoneAvailable()) {
             if ($this->accountType === 'Store Owner'){
                 // Primary indices: email - 0, phone - 1, password - 2, account type - 9
@@ -109,14 +110,15 @@ class Register
                 $row_user = explode('|', $data);
                 $this->readAdmin = @trim(strtolower($row_user[0]));
 
-                // check if user already exists
+                // check if user already exists depending on whether POST data
+                // is coming from PHP installation page or normal register page
                 if (!isset($_POST['email'])) {
                     if (strcmp($this->readAdmin, $this->adminUsername) === 0) {
                         $_SESSION['adminExists'] = $this->adminUsername . ' is not available';
                         return false;
                     }
                 }
-                else if (strcmp($this->readAdmin, $this->email) === 0){
+                elseif (strcmp($this->readAdmin, $this->email) === 0){
                     $_SESSION['adminExists'] = $this->email . ' is not available';
                     return false;
                 }
@@ -132,7 +134,10 @@ class Register
         }
     }
 
+
     public function isEmailAndPhoneAvailable(){
+        // see if user is signing up as a store owner
+        // to store login info in a separate flat file
         if ($this->accountType === 'Store Owner'){
             if (file_exists("../storeOwners.txt")){
                 $d = file_get_contents("../storeOwners.txt");
@@ -144,7 +149,7 @@ class Register
                     $this->readEmail = @trim(strtolower($row_user[0]));
                     $this->readPhone = @trim($row_user[1]);
     
-                    // check if user already exists
+                    // check if email/phone already exists
                     if (strcmp($this->readEmail, $this->email) === 0 && strcmp($this->readPhone, $this->phone) === 0) {
                         $_SESSION['emailExists'] = $this->email . ' is not available';
                         $_SESSION['phoneExists'] = $this->phone . ' is not available';
@@ -183,7 +188,7 @@ class Register
                 $this->readEmail = @trim(strtolower($row_user[0]));
                 $this->readPhone = @trim($row_user[1]);
 
-                // check if user already exists
+                // check if email/phone already exists
                 if (strcmp($this->readEmail, $this->email) === 0 && strcmp($this->readPhone, $this->phone) === 0) {
                     $_SESSION['emailExists'] = $this->email . ' is not available';
                     $_SESSION['phoneExists'] = $this->phone . ' is not available';

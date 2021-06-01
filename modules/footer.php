@@ -27,7 +27,7 @@ function endModule (){
         </div>
     <!-- </div> -->
     </body>
-    <script src="cookie.js"></script>
+    <script src="js/cookie.js"></script>
 OUTPUT;
     echo $html;
 }

@@ -65,7 +65,7 @@ if (($handle = fopen("text.csv", "r")) !== FALSE) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="storestyle.css">
+    <link rel="stylesheet" href="css/storestyle.css">
     <title>Category</title>
 </head>
 <body>
@@ -90,28 +90,28 @@ if (($handle = fopen("text.csv", "r")) !== FALSE) {
         </div>
         <div class="row">
             <div class="column">
-                <a href="products.php"><img src="shoes.jpg" alt="Details"></a>
+                <a href="products.php"><img src="media/shoes.jpg" alt="Details"></a>
                 <a href="products.php"><h2>Shoes</h2></a>
                 <p> New Tech </p>
                 <p> Release Date: 12/12/2012</p>
                 <p class="price">$1.45</p>
             </div>
             <div class="column">
-                <a href="products.php"><img src="shoes1.jpg" alt="Details"></a>
+                <a href="products.php"><img src="media/shoes1.jpg" alt="Details"></a>
                 <a href="products.php"><h2>T-Shirt</h2></a>
                 <p> Carbon Fiber</p>
                 <p> Release Date: 12/12/2012</p>
                 <p class="price">$1.23</p>
             </div>
             <div class="column">
-                <a href="products1.php"><img src="shoes2.jpg" alt="Details"></a>
+                <a href="products1.php"><img src="media/shoes2.jpg" alt="Details"></a>
                 <a href="products1.php"><h2>Shoes</h2></a>
                 <p> Flying </p>
                 <p> Release Date: 12/12/2012</p>
                 <p class="price">$1.67</p>
             </div>
             <div class="column">
-                <a href="products.php"><img src="shoes3.jpg" alt="Details"></a>
+                <a href="products.php"><img src="media/shoes3.jpg" alt="Details"></a>
                 <a href="products.php"><h2>Shirt</h2></a>
                 <p> Waterproofs</p>
                 <p> Release Date: 12/12/2012</p>
@@ -147,28 +147,28 @@ if (($handle = fopen("text.csv", "r")) !== FALSE) {
         </div>
         <div class="row"> 
             <div class="column">
-                <a href="products1.php"><img src="shoes4.jpg" alt="Details" sizes="width:30%" ></a>
+                <a href="products1.php"><img src="media/shoes4.jpg" alt="Details" sizes="width:30%" ></a>
                 <a href="products1.php"><h2>Shirt</h2></a>
                 <p> Carbon Fiber</p>
                 <p> Release Date: 12/12/2012</p>
                 <p class="price">$1.56</p>
             </div>
             <div class="column">
-                <a href="products1.php"><img src="shoes5.jpg" alt="Details"></a>
+                <a href="products1.php"><img src="media/shoes5.jpg" alt="Details"></a>
                 <a href="products1.php"><h2>Shoes</h2></a>
                 <p> Waterproofs</p>
                 <p> Release Date: 12/12/2012</p>
                 <p class="price">$1.67</p>
             </div>
             <div class="column">
-                <a href="products1.php"><img src="shirt.jpg" alt="Details" sizes="width:30%" ></a>
+                <a href="products1.php"><img src="media/shirt.jpg" alt="Details" sizes="width:30%" ></a>
                 <a href="products1.php"><h2>Shoes</h2></a>
                 <p> Flying </p>
                 <p> Release Date: 12/12/2012</p>
                 <p class="price">$1.45</p>
             </div>
             <div class="column">
-                <a href="products1.php"><img src="tshirt.jpg" alt="Details" sizes="width:30%" ></a>
+                <a href="products1.php"><img src="media/tshirt.jpg" alt="Details" sizes="width:30%" ></a>
                 <a href="products1.php"><h2>T-Shirt</h2></a>
                 <p> New Tech </p>
                 <p> Release Date: 12/12/2012</p>

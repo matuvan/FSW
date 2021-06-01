@@ -99,7 +99,7 @@ $product = 0;
 // footer, edit in 'modules/footer.php'
 endModule();
 ?>
-<script src="carousel.js"></script>
+<script src="js/carousel.js"></script>
 <script src="js/account_redirect.js"></script>
 
 </html>

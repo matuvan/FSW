@@ -16,7 +16,7 @@ if (!(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'])) {
 
 <body>
 <div class="header">
-<img src="admin.png" alt="adminlogo" id="adminLogo"><br>Admin Panel.
+<img src="media/admin.png" alt="adminlogo" id="adminLogo"><br>Admin Panel.
 </div>
 
 <div class="sidebar">

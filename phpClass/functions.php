@@ -2,19 +2,21 @@
 
 function read_all_products() {
     $file_name = 'products.csv';
-    $fp = fopen($file_name, 'r');
-    $first = fgetcsv($fp);
-    $products = [];
-    while ($row = fgetcsv($fp)) {
-        $i = 0;
-        $product = [];
-        foreach ($first as $col_name) {
-            $product[$col_name] = $row[$i];
-            $i++;
+    if (file_exists($file_name)){
+        $fp = fopen($file_name, 'r');
+        $first = fgetcsv($fp);
+        $products = [];
+        while ($row = fgetcsv($fp)) {
+            $i = 0;
+            $product = [];
+            foreach ($first as $col_name) {
+                $product[$col_name] = $row[$i];
+                $i++;
+            }
+            $products[] = $product;
         }
-        $products[] = $product;
-    }
-    return $products;
+        return $products;
+    }    
 }
 
 function get_product($product_id) {
