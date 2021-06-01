@@ -31,7 +31,7 @@ function navModule($pageTitle){
     <header>
         <div class="container">
             <div class="navbarhead">
-                <img src="logo.png">
+                <img src="media/logo.png">
                 <nav>
                     <ul>
                         <li><a href="index.php">Home</a></li>

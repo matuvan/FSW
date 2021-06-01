@@ -11,7 +11,6 @@ topModule();
 navModule("Cinery | Online Shopping Mall");
 ?>
 <?php
-session_start();
 include 'phpClass/functions.php';
 
 $products = read_all_products();
@@ -23,7 +22,7 @@ $product = 0;
 ?>
 
     <div class="mall">
-        <img src="mall.png">
+        <img src="media/mall.png">
     </div>
     <br>
     <!-- featured stores -->
@@ -34,7 +33,8 @@ $product = 0;
                 $id = $p['id'];
                 $name = $p['name'];
                 echo " <div class=\"column\">
-                <a href=\"$name\"><img src=\"blanklogo.jpg\"></a>
+                <a href=\"$name\"><img src=\"media/blanklogo.jpg\"></a>
+                <p style=\"text-align:center\">$name</p>
                 </div>
                 ";
                 $count++;
@@ -52,7 +52,7 @@ $product = 0;
                 $id = $p['id'];
                 $name = $p['name'];
                 echo " <div class=\"column\">
-                <a href=\"$name\"><img src=\"blanklogo.jpg\"></a>
+                <a href=\"$name\"><img src=\"media/blanklogo.jpg\"></a>
                 </div>";
                 $increase++;
                 if ($increase == 10) {
@@ -68,7 +68,7 @@ $product = 0;
                 $id = $p['id'];
                 $name = $p['name'];
                 echo " <div class=\"column\">
-                <a href=\"$name\"><img src=\"blanklogo.jpg\"></a>
+                <a href=\"$name\"><img src=\"media/blanklogo.jpg\"></a>
                 </div>";
                 $store++;
                 if ($store == 10) {
@@ -85,7 +85,7 @@ $product = 0;
                 $id = $p['id'];
                 $name = $p['name'];
                 echo " <div class=\"column\">
-                <a href=\"$name\"><img src=\"blanklogo.jpg\"></a>
+                <a href=\"$name\"><img src=\"media/blanklogo.jpg\"></a>
                 </div>";
                 $product++;
                 if ($product == 10) {
