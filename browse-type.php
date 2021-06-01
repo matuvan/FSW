@@ -10,7 +10,7 @@ topModule();
   echo '<link rel="stylesheet" href="css/browse-type.css">';
   echo '<link rel="stylesheet" href="css/storestyle.css">';
   echo '<link rel="stylesheet" href="css/styles.css">';
-  echo '<script src="browse-type.js"></script>';
+  echo '<script src="js/browse-type.js"></script>';
 navModule("Cinery | Browse Stores");
 ?>
 
