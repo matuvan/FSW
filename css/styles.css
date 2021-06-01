@@ -86,6 +86,13 @@ h2 {
     width: 100%;
 }
 
+.row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .row::after {
     content: "";
     clear: both;
